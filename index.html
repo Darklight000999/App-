@@ -4,886 +4,635 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>darklight000999</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
-        /* Global Styles */
+        /* === बेसिक स्टाइल और डार्क थीम === */
         :root {
-            --primary-color: #007bff;
-            --secondary-color: #6c757d;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
-            --info-color: #17a2b8;
-            --warning-color: #ffc107;
-            --dark-bg: #1a1a2e;
-            --dark-text: #e0e0e0;
-            --light-bg: #f8f9fa;
-            --light-text: #343a40;
-            --card-bg: #2b2b40;
-            --card-border: #3a3a50;
-            --input-bg: #3c3c50;
-            --button-bg: #007bff;
-            --button-text: #fff;
-            --hover-bg: #0056b3;
-            --gradient-start: #0f4c75;
-            --gradient-end: #3282b8;
+            --primary-color: #00aaff;
+            --background-color: #121212;
+            --surface-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --lock-color: #ffcc00;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-            transition: background-color 0.3s, color 0.3s;
-            -webkit-user-select: none;  /* Safari */
-            -moz-user-select: none;     /* Firefox */
-            -ms-user-select: none;      /* IE 10+ */
-            user-select: none;          /* Standard */
-            -webkit-touch-callout: none;
-            -webkit-text-size-adjust: 100%;
         }
 
-        body.light-theme {
-            background-color: var(--light-bg);
-            color: var(--light-text);
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            /* सुरक्षा: टेक्स्ट सलेक्शन और राइट क्लिक को रोकता है */
+            user-select: none; 
         }
 
-        body.light-theme .navbar {
-            background-color: #fff;
-            color: var(--light-text);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        /* === पेज कंटेनर === */
+        .page {
+            display: none; /* सभी पेज डिफ़ॉल्ट रूप से छिपे रहेंगे */
+            min-height: 100vh;
+            padding: 2rem;
         }
 
-        body.light-theme .navbar a {
-            color: var(--light-text);
-        }
-        body.light-theme .navbar a:hover {
-            background-color: #f0f0f0;
-        }
-        body.light-theme .card {
-            background-color: #fff;
-            border-color: #e0e0e0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        body.light-theme .input-field,
-        body.light-theme select,
-        body.light-theme textarea {
-            background-color: #f9f9f9;
-            border-color: #ccc;
-            color: var(--light-text);
-        }
-        body.light-theme .button,
-        body.light-theme .btn {
-            background-color: var(--primary-color);
-            color: #fff;
-        }
-        body.light-theme .button:hover,
-        body.light-theme .btn:hover {
-            background-color: var(--hover-bg);
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .flex-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--button-text);
-        }
-        .btn-primary:hover {
-            background-color: var(--hover-bg);
-        }
-        .btn-danger {
-            background-color: var(--danger-color);
-            color: var(--button-text);
-        }
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-        .btn-success {
-            background-color: var(--success-color);
-            color: var(--button-text);
-        }
-        .btn-success:hover {
-            background-color: #218838;
-        }
-        .btn-info {
-            background-color: var(--info-color);
-            color: var(--button-text);
-        }
-        .btn-info:hover {
-            background-color: #138496;
-        }
-        .btn-warning {
-            background-color: var(--warning-color);
-            color: var(--dark-text);
-        }
-        .btn-warning:hover {
-            background-color: #e0a800;
-        }
-        .btn-block {
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        .card-header {
-            font-size: 1.6em;
-            font-weight: 700;
-            margin-bottom: 25px;
-            text-align: center;
-            color: var(--primary-color);
-        }
-        .card-body {
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-        body.light-theme .form-group label {
-            color: var(--light-text);
-        }
-
-        .input-field,
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            background-color: var(--input-bg);
-            color: var(--dark-text);
-            font-size: 1em;
-            box-sizing: border-box;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        .input-field:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-            outline: none;
-        }
-        body.light-theme .input-field,
-        body.light-theme select,
-        body.light-theme textarea {
-            background-color: #fff;
-            border-color: #ccc;
-            color: var(--light-text);
-        }
-
-        /* Welcome Page */
-        .welcome-page {
-            display: flex;
+        .page.active {
+            display: flex; /* सक्रिय पेज दिखाई देगा */
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
-            color: #fff;
+            justify-content: center;
+        }
+        
+        /* === वेलकम पेज स्टाइल === */
+        #welcomePage {
             text-align: center;
-            animation: backgroundShift 15s ease infinite;
         }
 
-        @keyframes backgroundShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        #welcomePage h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px var(--primary-color);
         }
 
-        .welcome-page h1 {
-            font-size: 4.5em;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            text-shadow: 0 5px 10px rgba(0,0,0,0.3);
-            font-weight: 700;
-        }
-        .welcome-page p {
-            font-size: 1.5em;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .welcome-button {
-            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        .glowing-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
             color: #fff;
-            padding: 18px 40px;
-            font-size: 1.6em;
-            border-radius: 50px;
-            box-shadow: 0 8px 20px rgba(255,126,95,0.4);
-            animation: pulse 2s infinite ease-in-out, glow 1.5s infinite alternate;
+            background: linear-gradient(45deg, #00aaff, #0055aa);
             border: none;
+            border-radius: 50px;
             cursor: pointer;
+            box-shadow: 0 0 5px var(--primary-color), 0 0 25px var(--primary-color);
+            animation: glowing 1.5s infinite;
             transition: all 0.3s ease;
-            text-decoration: none;
+        }
+        
+        @keyframes glowing {
+            0% { box-shadow: 0 0 5px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff; }
+            50% { box-shadow: 0 0 20px #0055aa, 0 0 40px #0055aa, 0 0 50px #0055aa; }
+            100% { box-shadow: 0 0 5px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff; }
         }
 
-        .welcome-button:hover {
+        .glowing-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 12px 25px rgba(255,126,95,0.6);
-            animation-play-state: paused;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+        /* === लॉगिन पेज स्टाइल === */
+        .login-container {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(255,126,95,0.7), 0 0 20px rgba(255,126,95,0.5); }
-            100% { box-shadow: 0 0 20px rgba(255,126,95,0.9), 0 0 30px rgba(255,126,95,0.7); }
+        .login-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
         }
 
-        /* Navbar */
-        .navbar {
+        .login-tabs button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background-color: transparent;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.1rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .login-tabs button.active {
+            border-bottom-color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .login-form {
+            display: none;
+        }
+        .login-form.active {
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: var(--text-color);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #0088cc;
+        }
+
+        /* === डैशबोर्ड स्टाइल (छात्र और ऑपरेटर) === */
+        .dashboard {
+            width: 100%;
+            max-width: 1200px;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        
+        .dashboard-header {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--card-border);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #444;
         }
-
-        .navbar .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        .navbar .logo i {
-            margin-right: 10px;
-            color: var(--secondary-color);
-        }
-
-        .navbar-links a {
-            color: var(--dark-text);
-            text-decoration: none;
-            padding: 10px 18px;
-            margin-left: 15px;
-            border-radius: 6px;
-            transition: background-color 0.3s, color 0.3s;
-            font-weight: 500;
-        }
-
-        .navbar-links a:hover {
-            background-color: var(--input-bg);
-            color: var(--primary-color);
-        }
-
-        .theme-toggle-container {
-            margin-left: 20px;
-            display: flex;
-            align-items: center;
-        }
-        .theme-toggle {
-            position: relative;
-            display: inline-block;
-            width: 45px;
-            height: 25px;
-        }
-        .theme-toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 25px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 20px;
-            width: 20px;
-            left: 2px;
-            bottom: 2.5px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-        input:checked + .slider:before {
-            transform: translateX(20px);
-        }
-        .theme-toggle-label {
-            margin-left: 10px;
-            font-weight: 500;
-        }
-
-        /* Login Page */
-        .login-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 80px); /* Adjust for navbar height */
-            padding: 40px 0;
-        }
-
-        .login-card {
-            width: 100%;
-            max-width: 450px;
-            padding: 40px;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-        .login-card h2 {
-            font-size: 2.5em;
-            margin-bottom: 35px;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-        .login-card .message {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            color: var(--danger-color);
-            font-weight: 500;
-        }
-        .toggle-login-type {
-            display: flex;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--card-border);
-        }
-        .toggle-login-type button {
-            flex: 1;
-            padding: 12px 15px;
+        
+        .logout-btn {
+            padding: 8px 16px;
+            background-color: #c0392b;
+            color: #fff;
             border: none;
-            background-color: var(--input-bg);
-            color: var(--dark-text);
-            font-size: 1.1em;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-            font-weight: 600;
-        }
-        .toggle-login-type button.active {
-            background-color: var(--primary-color);
-            color: var(--button-text);
-        }
-        .toggle-login-type button:hover:not(.active) {
-            background-color: var(--card-border);
         }
 
-        /* Dashboard */
-        .dashboard-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--card-border);
-        }
-        .dashboard-header h1 {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .dashboard-header p {
-            font-size: 1.2em;
-            color: var(--secondary-color);
-        }
-
-        .category-grid {
+        /* छात्र डैशबोर्ड: कैटेगरी ग्रिड */
+        #categoryGrid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
         }
 
         .category-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
+            background-color: var(--surface-color);
+            border-radius: 10px;
+            padding: 1.5rem;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
-        }
-        .category-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-            background-color: var(--input-bg);
-        }
-        .category-card i {
-            font-size: 3.5em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            transition: color 0.3s;
-        }
-        .category-card:hover i {
-            color: var(--secondary-color);
-        }
-        .category-card h3 {
-            font-size: 1.5em;
-            color: var(--dark-text);
-            margin: 0;
-        }
-        body.light-theme .category-card h3 {
-            color: var(--light-text);
         }
 
-        /* Content Viewer */
-        .content-viewer {
-            padding-top: 20px;
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
         }
-        .content-viewer h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
+
+        .category-card h3 {
+            margin-bottom: 10px;
             color: var(--primary-color);
-            text-align: center;
         }
-        .content-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+        
+        /* प्रीमियम कंटेंट स्टाइल */
+        .category-card.premium {
+            filter: blur(4px); /* धुंधला इफ़ेक्ट */
         }
-        .content-item-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
+        .category-card.premium:hover {
+            filter: blur(2px);
         }
-        .content-item-card h3 {
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            color: var(--dark-text);
-        }
-        body.light-theme .content-item-card h3 {
-            color: var(--light-text);
-        }
-        .content-item-card p {
-            font-size: 0.95em;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        .content-item-card .view-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--info-color);
-            color: var(--button-text);
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .content-item-card .view-button:hover {
-            background-color: #117a8b;
-        }
-        .content-item-card .lock-overlay {
+        
+        .lock-icon {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--lock-color);
+            text-shadow: 0 0 10px black;
+            opacity: 0.8;
+            pointer-events: none; /* आइकन पर क्लिक नहीं होगा */
+        }
+
+        /* === ऑपरेटर डैशबोर्ड === */
+        .admin-section {
+            width: 100%;
+            background-color: var(--surface-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .admin-section h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* === कंटेंट व्यूअर (Modal) === */
+        #contentViewerModal {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            display: flex;
-            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: none;
             justify-content: center;
             align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: var(--background-color);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            height: 90%;
+            max-width: 1100px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #closeModal {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
             color: #fff;
-            font-size: 1.5em;
-            border-radius: 12px;
-            backdrop-filter: blur(5px);
-            z-index: 5;
-        }
-        .content-item-card .lock-overlay i {
-            font-size: 3em;
-            margin-bottom: 10px;
-            color: var(--warning-color);
-        }
-        .content-item-card .lock-overlay span {
-            font-size: 1.2em;
-            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: none;
         }
 
-        .media-viewer {
-            position: relative;
+        #mediaContainer {
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            background-color: #000;
-            border-radius: 12px;
-            margin-top: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            height: 100%;
+            position: relative;
         }
-        .media-viewer iframe,
-        .media-viewer video {
-            position: absolute;
-            top: 0;
-            left: 0;
+        
+        #mediaContainer video, #mediaContainer iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-        .pdf-viewer {
-            width: 100%;
-            min-height: 80vh;
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            margin-top: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-        }
-
-        .watermark {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.15;
-            z-index: 9999;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-content: space-around;
-            overflow: hidden;
-        }
-        .watermark span {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--primary-color);
-            transform: rotate(-30deg);
-            margin: 50px; /* Spacing between watermarks */
-            white-space: nowrap;
-        }
-
-        /* Admin Panel */
-        .admin-section {
-            padding-top: 20px;
-        }
-        .admin-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-            text-align: center;
-        }
-        .admin-section .admin-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        .admin-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        }
-        .admin-card h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: var(--info-color);
-            text-align: center;
-        }
-
-        #contentUploadForm label {
-            margin-top: 15px;
-            display: block;
-        }
-        #contentUploadForm .radio-group {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        #contentUploadForm .radio-group div {
-            display: flex;
-            align-items: center;
-        }
-        #contentUploadForm .radio-group input {
-            margin-right: 8px;
-        }
-
-        .category-management-list {
-            list-style: none;
-            padding: 0;
-        }
-        .category-management-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--input-bg);
-        }
-        .category-management-item:last-child {
-            border-bottom: none;
-        }
-        .category-management-item span {
-            font-size: 1.1em;
-        }
-        .category-management-item button {
-            margin-left: 10px;
-            padding: 6px 12px;
-            font-size: 0.9em;
-        }
-
-        .student-search-results {
-            margin-top: 20px;
-        }
-        .student-result-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--input-bg);
-        }
-        .student-result-item:last-child {
-            border-bottom: none;
-        }
-        .student-result-item span {
-            font-size: 1.1em;
-        }
-        .student-result-item button {
-            margin-left: 10px;
-            padding: 6px 12px;
-            font-size: 0.9em;
-        }
-        .premium-status {
-            font-weight: 600;
-            color: var(--warning-color);
-        }
-        .premium-status.unlocked {
-            color: var(--success-color);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .welcome-page h1 {
-                font-size: 3em;
-            }
-            .welcome-page p {
-                font-size: 1.2em;
-            }
-            .welcome-button {
-                padding: 15px 30px;
-                font-size: 1.3em;
-            }
-
-            .navbar {
-                flex-direction: column;
-                padding: 15px;
-            }
-            .navbar-links {
-                margin-top: 15px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .navbar-links a {
-                margin: 5px 8px;
-            }
-            .theme-toggle-container {
-                margin-top: 15px;
-                margin-left: 0;
-            }
-
-            .login-card {
-                padding: 30px;
-            }
-            .login-card h2 {
-                font-size: 2em;
-            }
-
-            .dashboard-header h1 {
-                font-size: 2.2em;
-            }
-            .dashboard-header p {
-                font-size: 1em;
-            }
-
-            .category-grid, .content-list, .admin-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .content-viewer h2, .admin-section h2 {
-                font-size: 2em;
-            }
-            .media-viewer {
-                padding-bottom: 75%; /* More square for mobile */
-            }
-            .watermark span {
-                font-size: 1em;
-                margin: 30px;
-            }
-        }
-
-        /* Printing and Copying Restrictions */
-        body {
-            -webkit-user-select: none;  /* Safari */
-            -moz-user-select: none;     /* Firefox */
-            -ms-user-select: none;      /* IE 10+ */
-            user-select: none;          /* Standard */
-            -webkit-touch-callout: none; /* iOS Safari */
-        }
-        /* Disable right-click */
-        body.disable-contextmenu {
-            pointer-events: none;
-        }
-        body.disable-contextmenu:before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 99999; /* Ensure it's above everything */
-            pointer-events: auto; /* Re-enable pointer events for the overlay */
-        }
-
-        /* Screenshot/Recording Prevention (limited effectiveness) */
-        /* These are client-side tricks and can be bypassed by determined users. */
-        /* For example, by using browser extensions or external screen recording software. */
-        /* For true content protection, server-side DRM and watermarking are necessary. */
-        .prevent-screenshot {
-            position: relative;
-            z-index: 1; /* Ensure content is above any 'blocker' */
-        }
-        .prevent-screenshot::before {
-            content: '';
+        
+        /* वॉटरमार्क स्टाइल */
+        #watermark {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: transparent;
-            /* Using a subtle animation can sometimes disrupt screenshot tools */
-            animation: flicker 0.1s infinite alternate;
-            opacity: 0.0001; /* Very subtle, nearly invisible */
-            pointer-events: none;
-            z-index: 2; /* Slightly above content, but transparent */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 2vw;
+            font-weight: bold;
+            pointer-events: none; /* वॉटरमार्क पर क्लिक नहीं होगा */
+            white-space: pre; /* लाइन ब्रेक को बनाए रखने के लिए */
         }
-        @keyframes flicker {
-            0% { opacity: 0.0001; }
-            100% { opacity: 0.0002; }
-        }
-
-        /* Print Specific Styles */
-        @media print {
-            body * {
-                visibility: hidden !important;
+        
+        /* === रिस्पॉन्सिव डिज़ाइन === */
+        @media (max-width: 768px) {
+            #welcomePage h1 {
+                font-size: 2rem;
             }
-            .content-viewer, .content-viewer * {
-                visibility: visible !important;
-                position: absolute !important;
-                left: 0 !important;
-                top: 0 !important;
+            .page {
+                padding: 1rem;
             }
-            .navbar, .welcome-page, .login-section, .dashboard-header, .category-grid,
-            .content-list .content-item-card, .admin-section, .watermark {
-                display: none !important;
-            }
-            .pdf-viewer iframe, .media-viewer iframe {
-                height: 100vh !important;
-                width: 100vw !important;
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
+            #categoryGrid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Welcome Page -->
-    <section id="welcomePage" class="welcome-page">
+    <div id="welcomePage" class="page active">
         <h1>Welcome to darklight000999</h1>
-        <a href="#" id="getStartedButton" class="welcome-button">Get started now</a>
-    </section>
+        <button id="getStartedBtn" class="glowing-btn">Get started now</button>
+    </div>
 
-    <!-- Navbar -->
-    <nav id="navbar" class="navbar" style="display: none;">
-        <a href="#" class="logo" onclick="navigateTo('dashboard')">
-            <i class="fas fa-magic"></i> darklight000999
-        </a>
-        <div class="navbar-links">
-            <a href="#" onclick="navigateTo('dashboard')"><i class="fas fa-home"></i> Home</a>
-            <a href="#" id="adminPanelLink" style="display: none;" onclick="navigateTo('adminPanel')"><i class="fas fa-user-shield"></i> Admin Panel</a>
-            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            <div class="theme-toggle-container">
-                <label class="theme-toggle">
-                    <input type="checkbox" id="themeToggle">
-                    <span class="slider"></span>
-                </label>
-                <span class="theme-toggle-label">Dark/Light</span>
+    <div id="loginPage" class="page">
+        <div class="login-container">
+            <div class="login-tabs">
+                <button id="studentTabBtn" class="active">Student Login</button>
+                <button id="operatorTabBtn">Operator Login</button>
             </div>
-        </div>
-    </nav>
-
-    <!-- Main Content Sections -->
-    <main class="container">
-        <!-- Login Section -->
-        <section id="loginSection" class="login-section" style="display: none;">
-            <div class="login-card">
-                <h2>Login</h2>
-                <p id="loginMessage" class="message" style="display: none;"></p>
-                <div class="toggle-login-type">
-                    <button id="studentLoginBtn" class="active">Student Login</button>
-                    <button id="operatorLoginBtn">Operator Login</button>
+            
+            <form id="studentLoginForm" class="login-form active">
+                <div class="input-group">
+                    <label for="studentEmail">Email</label>
+                    <input type="email" id="studentEmail" required>
                 </div>
-                <form
+                <div class="input-group">
+                    <label for="studentPassword">Password</label>
+                    <input type="password" id="studentPassword" required>
+                </div>
+                <button type="submit" class="login-btn">Login as Student</button>
+            </form>
+            
+            <form id="operatorLoginForm" class="login-form">
+                <div class="input-group">
+                    <label for="operatorEmail">Email</label>
+                    <input type="email" id="operatorEmail" required>
+                </div>
+                <div class="input-group">
+                    <label for="operatorPassword">Password</label>
+                    <input type="password" id="operatorPassword" required>
+                </div>
+                <button type="submit" class="login-btn">Login as Operator</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="studentDashboard" class="page dashboard">
+        <div class="dashboard-header">
+            <h1 id="studentWelcome">Welcome, Student!</h1>
+            <button class="logout-btn">Logout</button>
+        </div>
+        <div id="categoryGrid">
+            </div>
+    </div>
+
+    <div id="operatorDashboard" class="page dashboard">
+        <div class="dashboard-header">
+            <h1 id="operatorWelcome">Operator Dashboard</h1>
+            <button class="logout-btn">Logout</button>
+        </div>
+        
+        <div class="admin-section">
+            <h2>Grant Premium Access</h2>
+            <form id="grantAccessForm">
+                <div class="input-group">
+                    <label for="grantEmail">Student Email</label>
+                    <input type="email" id="grantEmail" placeholder="student@example.com" required>
+                </div>
+                <button type="submit" class="login-btn">Unlock Premium Content</button>
+            </form>
+        </div>
+
+        <div class="admin-section">
+            <h2>Manage Content (Dummy)</h2>
+            <p>यहाँ कंटेंट अपलोड करने, एडिट करने और डिलीट करने के लिए फ़ॉर्म होंगे।</p>
+        </div>
+    </div>
+    
+    <div id="contentViewerModal">
+        <div class="modal-content">
+            <button id="closeModal">&times;</button>
+            <div id="mediaContainer">
+                </div>
+            <div id="watermark"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+    <script>
+        // === 1. FIREBASE कॉन्फ़िगरेशन ===
+        // यहाँ Firebase से कॉपी किया गया अपना कॉन्फ़िगरेशन कोड पेस्ट करें
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Firebase को इनिशियलाइज़ करें
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // === 2. डमी डेटा (असली ऐप में यह डेटाबेस से आएगा) ===
+        // डमी वीडियो और PDF लिंक्स
+        const dummyVideo = "https://www.w3schools.com/html/mov_bbb.mp4";
+        const dummyPDF = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+        
+        const contentData = [
+            { id: 1, category: "Live Classes", type: "video", url: dummyVideo, premium: false },
+            { id: 2, category: "Hacking Tull", type: "pdf", url: dummyPDF, premium: false },
+            { id: 3, category: "Comands", type: "video", url: dummyVideo, premium: true },
+            { id: 4, category: "Nots and PDF", type: "pdf", url: dummyPDF, premium: true },
+            { id: 5, category: "Contact and support", type: "video", url: dummyVideo, premium: false },
+        ];
+        
+        // डमी प्रीमियम एक्सेस लिस्ट (असली ऐप में यह डेटाबेस में होगा)
+        let premiumUsers = []; // ऑपरेटर द्वारा एक्सेस दिए जाने पर ईमेल यहाँ जोड़ा जाएगा
+
+        // === 3. एलिमेंट चयनकर्ता (DOM Elements) ===
+        const pages = document.querySelectorAll('.page');
+        const getStartedBtn = document.getElementById('getStartedBtn');
+        const studentTabBtn = document.getElementById('studentTabBtn');
+        const operatorTabBtn = document.getElementById('operatorTabBtn');
+        const studentLoginForm = document.getElementById('studentLoginForm');
+        const operatorLoginForm = document.getElementById('operatorLoginForm');
+        const studentWelcome = document.getElementById('studentWelcome');
+        const operatorWelcome = document.getElementById('operatorWelcome');
+        const categoryGrid = document.getElementById('categoryGrid');
+        const grantAccessForm = document.getElementById('grantAccessForm');
+        const contentViewerModal = document.getElementById('contentViewerModal');
+        const closeModal = document.getElementById('closeModal');
+        const mediaContainer = document.getElementById('mediaContainer');
+        const watermark = document.getElementById('watermark');
+        const logoutBtns = document.querySelectorAll('.logout-btn');
+
+        // === 4. पेज नेविगेशन और UI लॉजिक ===
+        
+        // फ़ंक्शन: किसी विशेष पेज को दिखाने के लिए
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // लॉगिन टैब स्विच करने का लॉजिक
+        studentTabBtn.onclick = () => {
+            studentTabBtn.classList.add('active');
+            operatorTabBtn.classList.remove('active');
+            studentLoginForm.classList.add('active');
+            operatorLoginForm.classList.remove('active');
+        };
+
+        operatorTabBtn.onclick = () => {
+            operatorTabBtn.classList.add('active');
+            studentTabBtn.classList.remove('active');
+            operatorLoginForm.classList.add('active');
+            studentLoginForm.classList.remove('active');
+        };
+
+        // 'Get Started' बटन पर क्लिक लिस्नर
+        getStartedBtn.onclick = () => showPage('loginPage');
+        
+        // Modal बंद करने का लिस्नर
+        closeModal.onclick = () => {
+            contentViewerModal.style.display = 'none';
+            mediaContainer.innerHTML = ''; // मीडिया को साफ़ करें
+            watermark.style.display = 'none'; // वॉटरमार्क छिपाएँ
+        };
+
+        // === 5. सुरक्षा फ़ीचर्स ===
+
+        // राइट-क्लिक को बंद करना
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // कीबोर्ड शॉर्टकट (Ctrl+C, Ctrl+P, Ctrl+S) को बंद करना
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && ['c', 'p', 's'].includes(e.key.toLowerCase())) {
+                e.preventDefault();
+                alert('This action is disabled for security reasons.');
+            }
+        });
+
+        // === 6. ऑथेंटिकेशन (Firebase) ===
+        
+        // यूज़र की लॉगिन स्थिति की जाँच
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // यूज़र लॉग इन है
+                const operatorEmails = ['admin1@example.com', 'admin2@example.com'];
+                if (operatorEmails.includes(user.email)) {
+                    // अगर यूज़र एक ऑपरेटर है
+                    operatorWelcome.textContent = `Welcome, ${user.email}`;
+                    showPage('operatorDashboard');
+                } else {
+                    // अगर यूज़र एक छात्र है
+                    studentWelcome.textContent = `Welcome, ${user.email}`;
+                    renderStudentDashboard(user);
+                    showPage('studentDashboard');
+                }
+            } else {
+                // यूज़र लॉग आउट है
+                showPage('welcomePage');
+            }
+        });
+
+        // छात्र लॉगिन
+        studentLoginForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const email = document.getElementById('studentEmail').value;
+            const password = document.getElementById('studentPassword').value;
+            auth.signInWithEmailAndPassword(email, password)
+                .catch(error => alert(error.message));
+        });
+        
+        // ऑपरेटर लॉगिन
+        operatorLoginForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const email = document.getElementById('operatorEmail').value;
+            const password = document.getElementById('operatorPassword').value;
+            auth.signInWithEmailAndPassword(email, password)
+                .catch(error => alert(error.message));
+        });
+        
+        // लॉगआउट
+        logoutBtns.forEach(btn => {
+            btn.onclick = () => auth.signOut();
+        });
+
+        // === 7. डैशबोर्ड लॉजिक ===
+
+        // छात्र डैशबोर्ड को रेंडर करना
+        function renderStudentDashboard(user) {
+            categoryGrid.innerHTML = ''; // ग्रिड को साफ़ करें
+            contentData.forEach(item => {
+                const hasAccess = !item.premium || premiumUsers.includes(user.email);
+                
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                if (item.premium) {
+                    card.classList.add('premium');
+                }
+
+                const title = document.createElement('h3');
+                title.textContent = item.category;
+                card.appendChild(title);
+
+                const type = document.createElement('p');
+                type.textContent = `Type: ${item.type}`;
+                card.appendChild(type);
+
+                // अगर प्रीमियम है और एक्सेस नहीं है, तो लॉक आइकन दिखाएँ
+                if (item.premium && !hasAccess) {
+                    const lock = document.createElement('div');
+                    lock.className = 'lock-icon';
+                    lock.textContent = '🔒';
+                    card.appendChild(lock);
+                }
+                
+                // कार्ड पर क्लिक इवेंट
+                card.addEventListener('click', () => {
+                    if (item.premium && !hasAccess) {
+                        alert('This is premium content. Please contact support to unlock.');
+                    } else {
+                        showContent(item, user);
+                    }
+                });
+
+                categoryGrid.appendChild(card);
+            });
+        }
+        
+        // ऑपरेटर डैशबोर्ड: प्रीमियम एक्सेस देना
+        grantAccessForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const emailToGrant = document.getElementById('grantEmail').value;
+            if (emailToGrant && !premiumUsers.includes(emailToGrant)) {
+                premiumUsers.push(emailToGrant);
+                alert(`Premium access granted to ${emailToGrant}.`);
+                grantAccessForm.reset();
+            } else if (premiumUsers.includes(emailToGrant)) {
+                 alert(`${emailToGrant} already has premium access.`);
+            } else {
+                 alert('Please enter a valid email.');
+            }
+        });
+
+        // === 8. कंटेंट व्यूअर लॉजिक ===
+
+        // वीडियो या PDF दिखाने वाला फ़ंक्शन
+        function showContent(item, user) {
+            mediaContainer.innerHTML = ''; // पिछले कंटेंट को हटाएँ
+            
+            if (item.type === 'video') {
+                const videoPlayer = document.createElement('video');
+                videoPlayer.src = item.url;
+                videoPlayer.controls = true;
+                // डाउनलोड बटन को छिपाने की कोशिश
+                videoPlayer.setAttribute('controlsList', 'nodownload'); 
+                mediaContainer.appendChild(videoPlayer);
+            } else if (item.type === 'pdf') {
+                const pdfViewer = document.createElement('iframe');
+                // टूलबार को छिपाने के लिए URL में #toolbar=0 जोड़ें
+                pdfViewer.src = `${item.url}#toolbar=0`; 
+                mediaContainer.appendChild(pdfViewer);
+            }
+            
+            // वॉटरमार्क जोड़ना
+            if (item.premium) {
+                const timestamp = new Date().toLocaleString();
+                watermark.innerText = `${user.email}\n${timestamp}`;
+                watermark.style.display = 'block';
+            } else {
+                watermark.style.display = 'none';
+            }
+
+            contentViewerModal.style.display = 'flex';
+        }
+
+    </script>
+</body>
+</html>
