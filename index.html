@@ -1,638 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>darklight000999</title>
-    
-    <style>
-        /* === बेसिक स्टाइल और डार्क थीम === */
-        :root {
-            --primary-color: #00aaff;
-            --background-color: #121212;
-            --surface-color: #1e1e1e;
-            --text-color: #e0e0e0;
-            --lock-color: #ffcc00;
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>darklight000999</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            /* सुरक्षा: टेक्स्ट सलेक्शन और राइट क्लिक को रोकता है */
-            user-select: none; 
-        }
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #e6edf3;
+      font-family: "Segoe UI", sans-serif;
+      user-select: none;
+    }
 
-        /* === पेज कंटेनर === */
-        .page {
-            display: none; /* सभी पेज डिफ़ॉल्ट रूप से छिपे रहेंगे */
-            min-height: 100vh;
-            padding: 2rem;
-        }
+    /* Welcome Page */
+    #welcomePage h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      text-shadow: 0 0 20px #00aaff;
+    }
+    .glowing-btn {
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      background: linear-gradient(45deg, #00aaff, #0077cc);
+      box-shadow: 0 0 15px #00aaff;
+      animation: glow 2s infinite;
+    }
+    .glowing-btn:hover {
+      transform: scale(1.05);
+    }
+    @keyframes glow {
+      0%,100% { box-shadow: 0 0 15px #00aaff; }
+      50% { box-shadow: 0 0 25px #0077cc; }
+    }
 
-        .page.active {
-            display: flex; /* सक्रिय पेज दिखाई देगा */
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* === वेलकम पेज स्टाइल === */
-        #welcomePage {
-            text-align: center;
-        }
+    /* Login Box */
+    .login-container {
+      background: rgba(22,27,34,0.95);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
 
-        #welcomePage h1 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            text-shadow: 0 0 10px var(--primary-color);
-        }
+    /* Category Card */
+    .category-card {
+      background-color: #161b22;
+      border-radius: 12px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,170,255,0.15);
+    }
+    .category-card h3 {
+      color: #00aaff;
+      margin-bottom: .5rem;
+    }
+    .category-card.premium { filter: blur(3px); }
+    .lock-icon {
+      font-size: 2rem;
+      color: #ffcc00;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-        .glowing-btn {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: #fff;
-            background: linear-gradient(45deg, #00aaff, #0055aa);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 5px var(--primary-color), 0 0 25px var(--primary-color);
-            animation: glowing 1.5s infinite;
-            transition: all 0.3s ease;
-        }
-        
-        @keyframes glowing {
-            0% { box-shadow: 0 0 5px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff; }
-            50% { box-shadow: 0 0 20px #0055aa, 0 0 40px #0055aa, 0 0 50px #0055aa; }
-            100% { box-shadow: 0 0 5px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff; }
-        }
+    /* Modal */
+    #contentViewerModal .modal-content {
+      background: #0d1117;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    }
+    #watermark {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%) rotate(-30deg);
+      color: rgba(255,255,255,0.15);
+      font-size: 2vw;
+      font-weight: bold;
+      pointer-events: none;
+    }
 
-        .glowing-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* === लॉगिन पेज स्टाइल === */
-        .login-container {
-            background-color: var(--surface-color);
-            padding: 2rem;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-
-        .login-tabs {
-            display: flex;
-            margin-bottom: 1.5rem;
-        }
-
-        .login-tabs button {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background-color: transparent;
-            color: var(--text-color);
-            cursor: pointer;
-            font-size: 1.1rem;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .login-tabs button.active {
-            border-bottom-color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .login-form {
-            display: none;
-        }
-        .login-form.active {
-            display: block;
-        }
-
-        .input-group {
-            margin-bottom: 1rem;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #444;
-            background-color: #333;
-            color: var(--text-color);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            background-color: var(--primary-color);
-            color: #fff;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .login-btn:hover {
-            background-color: #0088cc;
-        }
-
-        /* === डैशबोर्ड स्टाइल (छात्र और ऑपरेटर) === */
-        .dashboard {
-            width: 100%;
-            max-width: 1200px;
-            align-items: flex-start;
-            justify-content: flex-start;
-        }
-        
-        .dashboard-header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444;
-        }
-        
-        .logout-btn {
-            padding: 8px 16px;
-            background-color: #c0392b;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* छात्र डैशबोर्ड: कैटेगरी ग्रिड */
-        #categoryGrid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            width: 100%;
-        }
-
-        .category-card {
-            background-color: var(--surface-color);
-            border-radius: 10px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
-        }
-
-        .category-card h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        /* प्रीमियम कंटेंट स्टाइल */
-        .category-card.premium {
-            filter: blur(4px); /* धुंधला इफ़ेक्ट */
-        }
-        .category-card.premium:hover {
-            filter: blur(2px);
-        }
-        
-        .lock-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: var(--lock-color);
-            text-shadow: 0 0 10px black;
-            opacity: 0.8;
-            pointer-events: none; /* आइकन पर क्लिक नहीं होगा */
-        }
-
-        /* === ऑपरेटर डैशबोर्ड === */
-        .admin-section {
-            width: 100%;
-            background-color: var(--surface-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-        .admin-section h2 {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* === कंटेंट व्यूअर (Modal) === */
-        #contentViewerModal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            background-color: var(--background-color);
-            padding: 20px;
-            border-radius: 10px;
-            width: 90%;
-            height: 90%;
-            max-width: 1100px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        #closeModal {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 2rem;
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            background: none;
-        }
-
-        #mediaContainer {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        
-        #mediaContainer video, #mediaContainer iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        /* वॉटरमार्क स्टाइल */
-        #watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg);
-            color: rgba(255, 255, 255, 0.15);
-            font-size: 2vw;
-            font-weight: bold;
-            pointer-events: none; /* वॉटरमार्क पर क्लिक नहीं होगा */
-            white-space: pre; /* लाइन ब्रेक को बनाए रखने के लिए */
-        }
-        
-        /* === रिस्पॉन्सिव डिज़ाइन === */
-        @media (max-width: 768px) {
-            #welcomePage h1 {
-                font-size: 2rem;
-            }
-            .page {
-                padding: 1rem;
-            }
-            #categoryGrid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* Pages */
+    .page { display: none; }
+    .page.active { display: block; }
+  </style>
 </head>
-<body>
+<body class="d-flex flex-column align-items-center justify-content-start min-vh-100 pt-4">
 
-    <div id="welcomePage" class="page active">
-        <h1>Welcome to darklight000999</h1>
-        <button id="getStartedBtn" class="glowing-btn">Get started now</button>
+  <!-- Top Logo -->
+  <div id="appLogo" class="text-center mb-4">
+    <img src="https://via.placeholder.com/120x120.png?text=Logo" 
+         alt="darklight000999 Logo" 
+         class="rounded-circle shadow" 
+         style="width:120px; height:120px; object-fit:cover;">
+    <h2 class="mt-2 fw-bold text-info">darklight000999</h2>
+  </div>
+
+  <!-- Welcome Page -->
+  <div id="welcomePage" class="page active text-center">
+    <h1 class="mb-4">Welcome to darklight000999</h1>
+    <button id="getStartedBtn" class="glowing-btn">
+      <i class="fas fa-play-circle me-2"></i> Get Started Now
+    </button>
+  </div>
+
+  <!-- Login Page -->
+  <div id="loginPage" class="page d-none">
+    <div class="login-container mx-auto" style="max-width:400px;">
+      <ul class="nav nav-tabs mb-3" id="loginTabs">
+        <li class="nav-item w-50">
+          <button id="studentTabBtn" class="nav-link active w-100">
+            <i class="fas fa-user-graduate me-2"></i>Student
+          </button>
+        </li>
+        <li class="nav-item w-50">
+          <button id="operatorTabBtn" class="nav-link w-100">
+            <i class="fas fa-user-shield me-2"></i>Operator
+          </button>
+        </li>
+      </ul>
+
+      <!-- Student Login -->
+      <form id="studentLoginForm" class="login-form active">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" id="studentEmail" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" id="studentPassword" required>
+        </div>
+        <button class="btn btn-primary w-100">
+          <i class="fas fa-sign-in-alt me-2"></i>Login as Student
+        </button>
+      </form>
+
+      <!-- Operator Login -->
+      <form id="operatorLoginForm" class="login-form d-none">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" id="operatorEmail" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" id="operatorPassword" required>
+        </div>
+        <button class="btn btn-success w-100">
+          <i class="fas fa-user-shield me-2"></i>Login as Operator
+        </button>
+      </form>
     </div>
+  </div>
 
-    <div id="loginPage" class="page">
-        <div class="login-container">
-            <div class="login-tabs">
-                <button id="studentTabBtn" class="active">Student Login</button>
-                <button id="operatorTabBtn">Operator Login</button>
-            </div>
-            
-            <form id="studentLoginForm" class="login-form active">
-                <div class="input-group">
-                    <label for="studentEmail">Email</label>
-                    <input type="email" id="studentEmail" required>
-                </div>
-                <div class="input-group">
-                    <label for="studentPassword">Password</label>
-                    <input type="password" id="studentPassword" required>
-                </div>
-                <button type="submit" class="login-btn">Login as Student</button>
-            </form>
-            
-            <form id="operatorLoginForm" class="login-form">
-                <div class="input-group">
-                    <label for="operatorEmail">Email</label>
-                    <input type="email" id="operatorEmail" required>
-                </div>
-                <div class="input-group">
-                    <label for="operatorPassword">Password</label>
-                    <input type="password" id="operatorPassword" required>
-                </div>
-                <button type="submit" class="login-btn">Login as Operator</button>
-            </form>
-        </div>
+  <!-- Student Dashboard -->
+  <div id="studentDashboard" class="page d-none container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 id="studentWelcome">
+        <i class="fas fa-user-graduate me-2"></i>Welcome, Student!
+      </h2>
+      <button class="btn btn-danger logout-btn">
+        <i class="fas fa-sign-out-alt me-1"></i>Logout
+      </button>
     </div>
+    <div id="categoryGrid" class="row g-4"></div>
+  </div>
 
-    <div id="studentDashboard" class="page dashboard">
-        <div class="dashboard-header">
-            <h1 id="studentWelcome">Welcome, Student!</h1>
-            <button class="logout-btn">Logout</button>
-        </div>
-        <div id="categoryGrid">
-            </div>
+  <!-- Operator Dashboard -->
+  <div id="operatorDashboard" class="page d-none container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 id="operatorWelcome">
+        <i class="fas fa-user-shield me-2"></i>Operator Dashboard
+      </h2>
+      <button class="btn btn-danger logout-btn">
+        <i class="fas fa-sign-out-alt me-1"></i>Logout
+      </button>
     </div>
-
-    <div id="operatorDashboard" class="page dashboard">
-        <div class="dashboard-header">
-            <h1 id="operatorWelcome">Operator Dashboard</h1>
-            <button class="logout-btn">Logout</button>
+    <div class="admin-section mb-4 p-3 bg-dark rounded">
+      <h4><i class="fas fa-lock-open me-2"></i>Grant Premium Access</h4>
+      <form id="grantAccessForm">
+        <div class="input-group">
+          <input type="email" id="grantEmail" class="form-control" placeholder="student@example.com" required>
+          <button class="btn btn-primary"><i class="fas fa-unlock me-1"></i>Unlock</button>
         </div>
-        
-        <div class="admin-section">
-            <h2>Grant Premium Access</h2>
-            <form id="grantAccessForm">
-                <div class="input-group">
-                    <label for="grantEmail">Student Email</label>
-                    <input type="email" id="grantEmail" placeholder="student@example.com" required>
-                </div>
-                <button type="submit" class="login-btn">Unlock Premium Content</button>
-            </form>
-        </div>
-
-        <div class="admin-section">
-            <h2>Manage Content (Dummy)</h2>
-            <p>यहाँ कंटेंट अपलोड करने, एडिट करने और डिलीट करने के लिए फ़ॉर्म होंगे।</p>
-        </div>
+      </form>
     </div>
-    
-    <div id="contentViewerModal">
-        <div class="modal-content">
-            <button id="closeModal">&times;</button>
-            <div id="mediaContainer">
-                </div>
-            <div id="watermark"></div>
+  </div>
+
+  <!-- Modal -->
+  <div id="contentViewerModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
         </div>
+        <div class="modal-body position-relative">
+          <div id="mediaContainer"></div>
+          <div id="watermark"></div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
-
-    <script>
-        // === 1. FIREBASE कॉन्फ़िगरेशन ===
-        // यहाँ Firebase से कॉपी किया गया अपना कॉन्फ़िगरेशन कोड पेस्ट करें
-        const firebaseConfig = {
-            apiKey: "AIzaSyDJE75UmW_x0p9PZpirL7EcDaDWNBMl084",
-            authDomain: "total-handler-470000-b1.firebaseapp.com",
-            projectId: "total-handler-470000-b1",
-            storageBucket: "total-handler-470000-b1.firebasestorage.app",
-            messagingSenderId: "1075975605727",
-            appId: "1:1075975605727:web:1588d4e08808aad8f5886a"
-        };
-
-        // Firebase को इनिशियलाइज़ करें
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-
-        // === 2. डमी डेटा (असली ऐप में यह डेटाबेस से आएगा) ===
-        // डमी वीडियो और PDF लिंक्स
-        const dummyVideo = "https://www.w3schools.com/html/mov_bbb.mp4";
-        const dummyPDF = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
-        
-        const contentData = [
-            { id: 1, category: "Live Classes", type: "video", url: dummyVideo, premium: false },
-            { id: 2, category: "Hacking Tull", type: "pdf", url: dummyPDF, premium: false },
-            { id: 3, category: "Comands", type: "video", url: dummyVideo, premium: true },
-            { id: 4, category: "Nots and PDF", type: "pdf", url: dummyPDF, premium: true },
-            { id: 5, category: "Contact and support", type: "video", url: dummyVideo, premium: false },
-        ];
-        
-        // डमी प्रीमियम एक्सेस लिस्ट (असली ऐप में यह डेटाबेस में होगा)
-        let premiumUsers = []; // ऑपरेटर द्वारा एक्सेस दिए जाने पर ईमेल यहाँ जोड़ा जाएगा
-
-        // === 3. एलिमेंट चयनकर्ता (DOM Elements) ===
-        const pages = document.querySelectorAll('.page');
-        const getStartedBtn = document.getElementById('getStartedBtn');
-        const studentTabBtn = document.getElementById('studentTabBtn');
-        const operatorTabBtn = document.getElementById('operatorTabBtn');
-        const studentLoginForm = document.getElementById('studentLoginForm');
-        const operatorLoginForm = document.getElementById('operatorLoginForm');
-        const studentWelcome = document.getElementById('studentWelcome');
-        const operatorWelcome = document.getElementById('operatorWelcome');
-        const categoryGrid = document.getElementById('categoryGrid');
-        const grantAccessForm = document.getElementById('grantAccessForm');
-        const contentViewerModal = document.getElementById('contentViewerModal');
-        const closeModal = document.getElementById('closeModal');
-        const mediaContainer = document.getElementById('mediaContainer');
-        const watermark = document.getElementById('watermark');
-        const logoutBtns = document.querySelectorAll('.logout-btn');
-
-        // === 4. पेज नेविगेशन और UI लॉजिक ===
-        
-        // फ़ंक्शन: किसी विशेष पेज को दिखाने के लिए
-        function showPage(pageId) {
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-        }
-
-        // लॉगिन टैब स्विच करने का लॉजिक
-        studentTabBtn.onclick = () => {
-            studentTabBtn.classList.add('active');
-            operatorTabBtn.classList.remove('active');
-            studentLoginForm.classList.add('active');
-            operatorLoginForm.classList.remove('active');
-        };
-
-        operatorTabBtn.onclick = () => {
-            operatorTabBtn.classList.add('active');
-            studentTabBtn.classList.remove('active');
-            operatorLoginForm.classList.add('active');
-            studentLoginForm.classList.remove('active');
-        };
-
-        // 'Get Started' बटन पर क्लिक लिस्नर
-        getStartedBtn.onclick = () => showPage('loginPage');
-        
-        // Modal बंद करने का लिस्नर
-        closeModal.onclick = () => {
-            contentViewerModal.style.display = 'none';
-            mediaContainer.innerHTML = ''; // मीडिया को साफ़ करें
-            watermark.style.display = 'none'; // वॉटरमार्क छिपाएँ
-        };
-
-        // === 5. सुरक्षा फ़ीचर्स ===
-
-        // राइट-क्लिक को बंद करना
-        document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // कीबोर्ड शॉर्टकट (Ctrl+C, Ctrl+P, Ctrl+S) को बंद करना
-        document.addEventListener('keydown', e => {
-            if (e.ctrlKey && ['c', 'p', 's'].includes(e.key.toLowerCase())) {
-                e.preventDefault();
-                alert('This action is disabled for security reasons.');
-            }
-        });
-
-        // === 6. ऑथेंटिकेशन (Firebase) ===
-        
-        // यूज़र की लॉगिन स्थिति की जाँच
-        auth.onAuthStateChanged(user => {
-            if (user) {
-                // यूज़र लॉग इन है
-                const operatorEmails = ['admin1@example.com', 'admin2@example.com'];
-                if (operatorEmails.includes(user.email)) {
-                    // अगर यूज़र एक ऑपरेटर है
-                    operatorWelcome.textContent = `Welcome, ${user.email}`;
-                    showPage('operatorDashboard');
-                } else {
-                    // अगर यूज़र एक छात्र है
-                    studentWelcome.textContent = `Welcome, ${user.email}`;
-                    renderStudentDashboard(user);
-                    showPage('studentDashboard');
-                }
-            } else {
-                // यूज़र लॉग आउट है
-                showPage('welcomePage');
-            }
-        });
-
-        // छात्र लॉगिन
-        studentLoginForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const email = document.getElementById('studentEmail').value;
-            const password = document.getElementById('studentPassword').value;
-            auth.signInWithEmailAndPassword(email, password)
-                .catch(error => alert(error.message));
-        });
-        
-        // ऑपरेटर लॉगिन
-        operatorLoginForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const email = document.getElementById('operatorEmail').value;
-            const password = document.getElementById('operatorPassword').value;
-            auth.signInWithEmailAndPassword(email, password)
-                .catch(error => alert(error.message));
-        });
-        
-        // लॉगआउट
-        logoutBtns.forEach(btn => {
-            btn.onclick = () => auth.signOut();
-        });
-
-        // === 7. डैशबोर्ड लॉजिक ===
-
-        // छात्र डैशबोर्ड को रेंडर करना
-        function renderStudentDashboard(user) {
-            categoryGrid.innerHTML = ''; // ग्रिड को साफ़ करें
-            contentData.forEach(item => {
-                const hasAccess = !item.premium || premiumUsers.includes(user.email);
-                
-                const card = document.createElement('div');
-                card.className = 'category-card';
-                if (item.premium) {
-                    card.classList.add('premium');
-                }
-
-                const title = document.createElement('h3');
-                title.textContent = item.category;
-                card.appendChild(title);
-
-                const type = document.createElement('p');
-                type.textContent = `Type: ${item.type}`;
-                card.appendChild(type);
-
-                // अगर प्रीमियम है और एक्सेस नहीं है, तो लॉक आइकन दिखाएँ
-                if (item.premium && !hasAccess) {
-                    const lock = document.createElement('div');
-                    lock.className = 'lock-icon';
-                    lock.textContent = '🔒';
-                    card.appendChild(lock);
-                }
-                
-                // कार्ड पर क्लिक इवेंट
-                card.addEventListener('click', () => {
-                    if (item.premium && !hasAccess) {
-                        alert('This is premium content. Please contact support to unlock.');
-                    } else {
-                        showContent(item, user);
-                    }
-                });
-
-                categoryGrid.appendChild(card);
-            });
-        }
-        
-        // ऑपरेटर डैशबोर्ड: प्रीमियम एक्सेस देना
-        grantAccessForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const emailToGrant = document.getElementById('grantEmail').value;
-            if (emailToGrant && !premiumUsers.includes(emailToGrant)) {
-                premiumUsers.push(emailToGrant);
-                alert(`Premium access granted to ${emailToGrant}.`);
-                grantAccessForm.reset();
-            } else if (premiumUsers.includes(emailToGrant)) {
-                 alert(`${emailToGrant} already has premium access.`);
-            } else {
-                 alert('Please enter a valid email.');
-            }
-        });
-
-        // === 8. कंटेंट व्यूअर लॉजिक ===
-
-        // वीडियो या PDF दिखाने वाला फ़ंक्शन
-        function showContent(item, user) {
-            mediaContainer.innerHTML = ''; // पिछले कंटेंट को हटाएँ
-            
-            if (item.type === 'video') {
-                const videoPlayer = document.createElement('video');
-                videoPlayer.src = item.url;
-                videoPlayer.controls = true;
-                // डाउनलोड बटन को छिपाने की कोशिश
-                videoPlayer.setAttribute('controlsList', 'nodownload'); 
-                mediaContainer.appendChild(videoPlayer);
-            } else if (item.type === 'pdf') {
-                const pdfViewer = document.createElement('iframe');
-                // टूलबार को छिपाने के लिए URL में #toolbar=0 जोड़ें
-                pdfViewer.src = `${item.url}#toolbar=0`; 
-                mediaContainer.appendChild(pdfViewer);
-            }
-            
-            // वॉटरमार्क जोड़ना
-            if (item.premium) {
-                const timestamp = new Date().toLocaleString();
-                watermark.innerText = `${user.email}\n${timestamp}`;
-                watermark.style.display = 'block';
-            } else {
-                watermark.style.display = 'none';
-            }
-
-            contentViewerModal.style.display = 'flex';
-        }
-
-    </script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- यहां आपका Firebase + Custom JS रहेगा -->
 </body>
 </html>
