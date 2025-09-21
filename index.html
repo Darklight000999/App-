@@ -451,8 +451,8 @@ body.light{
       const msg = document.getElementById("successMsg");
       if (response.ok) {
         msg.style.display = "block";
-        msg.textContent = "Message Sent Successfully! Redirecting...";
-        msg.style.color = "#00ffe7";
+        msg.textContent = "First login, if you don't have an account then create a new account...";
+        msg.style.color = "#ff0040";
         msg.classList.add("shake");
         setTimeout(() => {
           window.location.href = "https://rkscybersecurity.netlify.app";
