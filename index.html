@@ -34,40 +34,30 @@
     }
     
  [data-theme="light"] {
-  /* ===== Light Theme (Firebase Inspired) ===== */
+  /* ===== Light Theme (Firebase Deep Variant) ===== */
+  --bg: #ECEFF1;          /* हल्का लेकिन ज्यादा depth */
+  --text: #1A1C1E;        /* गहरा टेक्स्ट */
+  --muted: #37474F;       /* डीप ग्रे */
+  --card1: #FFFFFF;
+  --card2: #E3E6EA;       /* हल्का ब्लू-ग्रे */
+  --accent: #F9A825;      /* Deep Firebase Yellow */
+  --accent-2: #E65100;    /* Deep Orange */
+  --accent-3: #0277BD;    /* Deep Firebase Blue */
+  --border: rgba(0, 0, 0, 0.15);
+  --shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  --chip: rgba(0, 0, 0, 0.08);
 
-  /* Base */
-  --bg: #130069;              /* Deep Indigo Background */
-  --text: #202124;            /* Primary Text (Blackish Grey) */
-  --muted: #5f6368;           /* Muted Text */
+  /* Deep Gradients inspired by Firebase */
+  --grad-1: linear-gradient(135deg, #F9A825 0%, #E65100 100%);
+  --grad-2: linear-gradient(135deg, #E65100 0%, #0277BD 100%);
+  --grad-3: linear-gradient(135deg, #0277BD 0%, #6A1B9A 100%);
+  --grad-4: linear-gradient(135deg, #6A1B9A 0%, #B71C1C 100%);
+  --grad-5: linear-gradient(135deg, #B71C1C 0%, #2E7D32 100%);
+  --grad-6: linear-gradient(135deg, #2E7D32 0%, #F9A825 100%);
 
-  /* Cards & Surfaces */
-  --card1: #ffffff;
-  --card2: #f1f3f4;
-  --border: rgba(0, 0, 0, 0.12);
-  --shadow: 0 10px 26px rgba(32, 33, 36, 0.15);
-  --chip: rgba(32, 33, 36, 0.06);
-
-  /* Firebase Accents */
-  --accent:   #FFCA28;   /* Yellow */
-  --accent-2: #FF8F00;   /* Orange */
-  --accent-3: #039BE5;   /* Blue */
-  --accent-4: #9334E6;   /* Purple (GCP vibe) */
-  --accent-5: #EA4335;   /* Google Red */
-  --accent-6: #34A853;   /* Google Green */
-
-  /* Gradients inspired by Firebase Brand Colors */
-  --grad-1: linear-gradient(135deg, #FFCA28 0%, #FF8F00 100%);
-  --grad-2: linear-gradient(135deg, #FF8F00 0%, #039BE5 100%);
-  --grad-3: linear-gradient(135deg, #039BE5 0%, #9334E6 100%);
-  --grad-4: linear-gradient(135deg, #9334E6 0%, #EA4335 100%);
-  --grad-5: linear-gradient(135deg, #EA4335 0%, #34A853 100%);
-  --grad-6: linear-gradient(135deg, #34A853 0%, #FFCA28 100%);
-
-  /* Section Background (subtle Firebase aura) */
   --section-bg:
-    radial-gradient(1200px 600px at 10% -10%, rgba(255, 202, 40, 0.15), transparent 60%),
-    radial-gradient(1200px 600px at 100% 110%, rgba(3, 155, 229, 0.12), transparent 60%);
+    radial-gradient(1200px 600px at 10% -10%, rgba(249, 168, 37, 0.18), transparent 60%),
+    radial-gradient(1200px 600px at 100% 110%, rgba(2, 119, 189, 0.15), transparent 60%);
 }
 
     h1, h2, h3 {
