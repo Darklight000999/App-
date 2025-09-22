@@ -366,39 +366,7 @@ body.light{
   <a href="https://share.google/BIo6sUsdFCFMMkc0z" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google Business" width="50" height="50" style="margin:10px;"/>
   </a>
- 
 
-<script>
-  document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    // Send data via FormSubmit
-    fetch("https://formsubmit.co/ajax/darklightrkshackers@gmail.com", {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        message: document.getElementById("message").value
-      })
-    })
-    .then(response => {
-      if (response.ok) {
-        const msg = document.getElementById("successMsg");
-        msg.style.display = "block";
-        msg.classList.add("shake");
-        // Redirect after 2 seconds
-        setTimeout(() => {
-          window.location.href = "https://rkscybersecurity.netlify.app";
-        }, 2000);
-      } else {
-        alert("Something went wrong, please try again.");
-      }
-    })
-    .catch(error => alert("Error: " + error));
-  });
-</script>
   
 <section id="contact">
   <h2 class="section-title">Contact Us</h2>
