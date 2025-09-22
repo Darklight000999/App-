@@ -34,30 +34,31 @@
     }
 
     [data-theme="light"] {
-      /* ===== Light Theme (Clean Vivid) ===== */
-      --bg: #f6f9fb;
-      --text: #6a8700;
-      --muted: #425b76;
-      --card1: #ffffff;
-      --card2: #eef6ff;
-      --accent: #06c287;
-      --accent-2: #0aa7dd;
-      --accent-3: #b832ff;
-      --border: rgba(0, 0, 0, 0.10);
-      --shadow: 0 10px 26px rgba(9, 30, 66, 0.12);
-      --chip: rgba(8, 17, 27, 0.06);
+  /* ===== Light Theme (Firebase Inspired) ===== */
+  --bg: #F6F9FB;
+  --text: #202124;
+  --muted: #5f6368;
+  --card1: #ffffff;
+  --card2: #f1f3f4;
+  --accent: #FFCA28;   /* Firebase Yellow */
+  --accent-2: #FF8F00; /* Firebase Orange */
+  --accent-3: #039BE5; /* Firebase Blue */
+  --border: rgba(0, 0, 0, 0.12);
+  --shadow: 0 10px 26px rgba(32, 33, 36, 0.15);
+  --chip: rgba(32, 33, 36, 0.06);
 
-      --grad-1: linear-gradient(135deg, #06c287 0%, #0aa7dd 100%);
-      --grad-2: linear-gradient(135deg, #0aa7dd 0%, #6c63ff 100%);
-      --grad-3: linear-gradient(135deg, #6c63ff 0%, #b832ff 100%);
-      --grad-4: linear-gradient(135deg, #b832ff 0%, #ff7a1a 100%);
-      --grad-5: linear-gradient(135deg, #ff7a1a 0%, #ffd21f 100%);
-      --grad-6: linear-gradient(135deg, #ffd21f 0%, #06c287 100%);
+  /* Gradients inspired by Firebase Brand Colors */
+  --grad-1: linear-gradient(135deg, #FFCA28 0%, #FF8F00 100%);
+  --grad-2: linear-gradient(135deg, #FF8F00 0%, #039BE5 100%);
+  --grad-3: linear-gradient(135deg, #039BE5 0%, #9334E6 100%);
+  --grad-4: linear-gradient(135deg, #9334E6 0%, #EA4335 100%);
+  --grad-5: linear-gradient(135deg, #EA4335 0%, #34A853 100%);
+  --grad-6: linear-gradient(135deg, #34A853 0%, #FFCA28 100%);
 
-      --section-bg:
-        radial-gradient(1200px 600px at 10% -10%, rgba(6, 194, 135, 0.12), transparent 60%),
-        radial-gradient(1200px 600px at 100% 110%, rgba(10, 167, 221, 0.10), transparent 60%);
-    }
+  --section-bg:
+    radial-gradient(1200px 600px at 10% -10%, rgba(255, 202, 40, 0.15), transparent 60%),
+    radial-gradient(1200px 600px at 100% 110%, rgba(3, 155, 229, 0.12), transparent 60%);
+}
 
     /* ========== Basic Styles ========== */
     body {
