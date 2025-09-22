@@ -32,20 +32,29 @@
         radial-gradient(1200px 600px at 10% -10%, rgba(0, 255, 166, 0.12), transparent 60%),
         radial-gradient(1200px 600px at 100% 110%, rgba(0, 210, 255, 0.10), transparent 60%);
     }
-
-    [data-theme="light"] {
+    
+ [data-theme="light"] {
   /* ===== Light Theme (Firebase Inspired) ===== */
-  --bg: #130069;
-  --text: #202124;
-  --muted: #5f6368;
+
+  /* Base */
+  --bg: #130069;              /* Deep Indigo Background */
+  --text: #202124;            /* Primary Text (Blackish Grey) */
+  --muted: #5f6368;           /* Muted Text */
+
+  /* Cards & Surfaces */
   --card1: #ffffff;
   --card2: #f1f3f4;
-  --accent: #FFCA28;   /* Firebase Yellow */
-  --accent-2: #FF8F00; /* Firebase Orange */
-  --accent-3: #039BE5; /* Firebase Blue */
   --border: rgba(0, 0, 0, 0.12);
   --shadow: 0 10px 26px rgba(32, 33, 36, 0.15);
   --chip: rgba(32, 33, 36, 0.06);
+
+  /* Firebase Accents */
+  --accent:   #FFCA28;   /* Yellow */
+  --accent-2: #FF8F00;   /* Orange */
+  --accent-3: #039BE5;   /* Blue */
+  --accent-4: #9334E6;   /* Purple (GCP vibe) */
+  --accent-5: #EA4335;   /* Google Red */
+  --accent-6: #34A853;   /* Google Green */
 
   /* Gradients inspired by Firebase Brand Colors */
   --grad-1: linear-gradient(135deg, #FFCA28 0%, #FF8F00 100%);
@@ -55,23 +64,11 @@
   --grad-5: linear-gradient(135deg, #EA4335 0%, #34A853 100%);
   --grad-6: linear-gradient(135deg, #34A853 0%, #FFCA28 100%);
 
+  /* Section Background (subtle Firebase aura) */
   --section-bg:
     radial-gradient(1200px 600px at 10% -10%, rgba(255, 202, 40, 0.15), transparent 60%),
     radial-gradient(1200px 600px at 100% 110%, rgba(3, 155, 229, 0.12), transparent 60%);
 }
-
-    /* ========== Basic Styles ========== */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      background-image: var(--section-bg);
-      background-size: cover;
-      background-repeat: no-repeat;
-      transition: background 0.5s ease, color 0.3s ease;
-    }
 
     h1, h2, h3 {
       margin-top: 0;
