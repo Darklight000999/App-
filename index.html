@@ -212,7 +212,7 @@ section{margin:68px 0}
 
 /* Contact form */
 form .field{display:flex;flex-direction:column;gap:8px;margin:10px 0}
-label{font-weight:750;color:var(--text)}
+label{font-weight:700;color:var(--text)}
 .input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:color-mix(in oklab,var(--card1),#000 8%);color:var(--text);outline:none;transition:border .2s,box-shadow .2s}
 .input:focus,textarea:focus{border:1px solid color-mix(in oklab,var(--accent),#fff 12%);box-shadow:0 0 0 3px color-mix(in oklab,var(--accent),#fff 20%)}
 
@@ -366,7 +366,39 @@ body.light{
   <a href="https://share.google/BIo6sUsdFCFMMkc0z" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google Business" width="50" height="50" style="margin:10px;"/>
   </a>
+ 
 
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Send data via FormSubmit
+    fetch("https://formsubmit.co/ajax/darklightrkshackers@gmail.com", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        const msg = document.getElementById("successMsg");
+        msg.style.display = "block";
+        msg.classList.add("shake");
+        // Redirect after 2 seconds
+        setTimeout(() => {
+          window.location.href = "https://rkscybersecurity.netlify.app";
+        }, 2000);
+      } else {
+        alert("Something went wrong, please try again.");
+      }
+    })
+    .catch(error => alert("Error: " + error));
+  });
+</script>
   
 <section id="contact">
   <h2 class="section-title">Contact Us</h2>
@@ -462,10 +494,10 @@ body.light{
 
   .contact-form {
     width: 100%;
-    max-width: 600px; /* पहले 500px था */
+    max-width: 750px; /* पहले 500px था */
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
-    padding: 10px;
+    padding: 35px;
     border-radius: 20px;
     box-shadow: 0px 0px 25px rgba(0, 255, 200, 0.4);
   }
@@ -548,6 +580,33 @@ body.light{
   .shake {
     animation: shake 0.5s ease-in-out 2;
   }
+
+  /* 📱 Mobile Responsive */
+  @media (max-width: 600px) {
+    .contact-form {
+      padding: 20px;
+    }
+    .btn {
+      font-size: 15px;
+      padding: 10px;
+    }
+    .section-title {
+      font-size: 26px;
+    }
+  }
+</style>
+
+<div id="adminPanel">
+  <h2>🔐 Admin Control Center</h2>
+  <p>Welcome, Super Admin. Manage DarkLight NGC operations securely.</p>
+  <button class="btn" onclick="logout()">Logout</button>
+</div>
+
+<div id="userPanel">
+  <h2>👤 Secure Client Portal</h2>
+  <p>Welcome to your dashboard. Access reports, alerts and monitoring data here.</p>
+  <button class="btn" onclick="logout()">Logout</button>
+</div>
 
   </main>  <footer>
     <p>© 2025 DarkLight000999 — National Grade Cybersecurity Agency | All Rights Reserved</p>
