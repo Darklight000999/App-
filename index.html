@@ -224,29 +224,49 @@ footer a:hover{text-decoration:underline}
 .overlay{position:fixed;inset:0;pointer-events:none;background:var(--section-bg);z-index:-2}
 .theme-toggle{position:absolute;right:20px;bottom:20px;width:50px;height:50px;border-radius:50%;border:1px solid var(--border);background:var(--grad-1);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow)}
 
-/* Support old JS that toggles body.light */
-body.light{
-  --bg:#f6f9fb;
-  --text:#0e1322;
-  --muted:#425b76;
-  --card1:#ffffff;
-  --card2:#eef6ff;
-  --accent:#06c287;
-  --accent-2:#0aa7dd;
-  --accent-3:#b832ff;
-  --border:rgba(0,0,0,.10);
-  --shadow:0 10px 26px rgba(9,30,66,.12);
-  --chip:rgba(8,17,27,.06);
+/* 🌟 Light Mode Theme (with smooth animations) */
+body.light {
+  /* 🎨 Colors */
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --muted: #475569;
+  --card1: #ffffff;
+  --card2: #f1f5f9;
+  --accent: #06c287;
+  --accent-2: #0aa7dd;
+  --accent-3: #6c63ff;
+  --border: rgba(0, 0, 0, .08);
+  --shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
+  --chip: rgba(14, 23, 42, .06);
+
+  /* 🌈 Gradients */
   --grad-1: linear-gradient(135deg, #06c287 0%, #0aa7dd 100%);
   --grad-2: linear-gradient(135deg, #0aa7dd 0%, #6c63ff 100%);
   --grad-3: linear-gradient(135deg, #6c63ff 0%, #b832ff 100%);
   --grad-4: linear-gradient(135deg, #b832ff 0%, #ff7a1a 100%);
   --grad-5: linear-gradient(135deg, #ff7a1a 0%, #ffd21f 100%);
   --grad-6: linear-gradient(135deg, #ffd21f 0%, #06c287 100%);
-  --section-bg: radial-gradient(1200px 600px at 10% -10%, rgba(6,194,135,.12), transparent 60%),
-                radial-gradient(1200px 600px at 100% 110%, rgba(10,167,221,.10), transparent 60%);
+
+  /* 🌌 Section Background */
+  --section-bg: radial-gradient(1200px 600px at 10% -10%, rgba(6, 194, 135, .12), transparent 60%),
+                radial-gradient(1200px 600px at 100% 110%, rgba(10, 167, 221, .10), transparent 60%);
+
+  /* ✨ Animation (Smooth Theme Switch) */
+  transition: background-color 0.6s ease, 
+              color 0.6s ease, 
+              box-shadow 0.6s ease, 
+              border-color 0.6s ease;
 }
 
+/* Optional hover / active animation effects */
+button, .card {
+  transition: all 0.4s ease-in-out;
+}
+
+button:hover, .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.15);
+}
   </style>
 </head>
 <body data-theme="dark">
