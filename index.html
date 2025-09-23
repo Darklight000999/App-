@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="hi">
+<!DOCTYPE html><html lang="hi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,221 +6,775 @@
   <title>DarkLight000999 — National Cybersecurity Agency</title>
   <link rel="icon" href="1000058324.png" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  
-  <!-- ===== Master CSS (merged & cleaned) ===== -->
   <style>
-    /* ✅ यहाँ वही CSS है जो आपने दी थी, 
-       लेकिन duplicate blocks और बेकार repetition हटा दिए गए हैं */
-       
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:'Poppins',system-ui,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-      transition:background .35s ease,color .35s ease;
+    :root{  
+      /* ===== Dark Theme (Vivid Cyber) ===== */
+      --bg: #05070b;
+      --text: #f4fff6;
+      --muted: #a9f7e1;
+      --card1: #0a1217;
+      --card2: #0c0f24;
+      --accent: #00ffa6;
+      --accent-2: #00d2ff;
+      --accent-3: #ff3df5;
+      --border: rgba(0, 255, 166, 0.35);
+      --shadow: 0 0 24px rgba(0, 255, 166, 0.22);
+      --chip: rgba(255, 255, 255, 0.08);
+
+      --grad-1: linear-gradient(135deg, #00ffa6 0%, #00d2ff 100%);
+      --grad-2: linear-gradient(135deg, #00d2ff 0%, #7c4dff 100%);
+      --grad-3: linear-gradient(135deg, #7c4dff 0%, #ff3df5 100%);
+      --grad-4: linear-gradient(135deg, #ff3df5 0%, #ff8a00 100%);
+      --grad-5: linear-gradient(135deg, #ff8a00 0%, #ffe600 100%);
+      --grad-6: linear-gradient(135deg, #ffe600 0%, #00ffa6 100%);
+
+      --section-bg:
+        radial-gradient(1200px 600px at 10% -10%, rgba(0, 255, 166, 0.12), transparent 60%),
+        radial-gradient(1200px 600px at 100% 110%, rgba(0, 210, 255, 0.10), transparent 60%);
     }
 
-    /* ---- Root Theme Variables (Dark + Light Support) ---- */
-    :root {
-      --bg:#0a1217;
-      --text:#f4fff6;
-      --muted:#a9f7e1;
-      --card1:#0a1217;
-      --card2:#0c0f24;
-      --accent:#b1cc00;
-      --accent-2:#00d2ff;
-      --accent-3:#ff3df5;
-      --border:rgba(0,255,166,.35);
-      --shadow:0 0 24px rgba(0,255,166,.22);
-      --chip:rgba(255,255,255,.08);
-      --grad-1:linear-gradient(135deg,#00ffa6 0%,#00d2ff 100%);
-      --grad-2:linear-gradient(135deg,#00d2ff 0%,#7c4dff 100%);
-      --grad-3:linear-gradient(135deg,#7c4dff 0%,#ff3df5 100%);
-      --grad-4:linear-gradient(135deg,#ff3df5 0%,#ff8a00 100%);
-      --grad-5:linear-gradient(135deg,#ff8a00 0%,#ffe600 100%);
-      --grad-6:linear-gradient(135deg,#ffe600 0%,#00ffa6 100%);
-      --section-bg:radial-gradient(1200px 600px at 10% -10%,rgba(0,255,166,.12),transparent 60%),
-                   radial-gradient(1200px 600px at 100% 110%,rgba(0,210,255,.10),transparent 60%);
+    [data-theme="light"] {
+      /* ===== Light Theme (Clean Vivid) ===== */
+      --bg: #f6f9fb;
+      --text: #0e1322;
+      --muted: #425b76;
+      --card1: #ffffff;
+      --card2: #eef6ff;
+      --accent: #06c287;
+      --accent-2: #0aa7dd;
+      --accent-3: #b832ff;
+      --border: rgba(0, 0, 0, 0.10);
+      --shadow: 0 10px 26px rgba(9, 30, 66, 0.12);
+      --chip: rgba(8, 17, 27, 0.06);
+
+      --grad-1: linear-gradient(135deg, #06c287 0%, #0aa7dd 100%);
+      --grad-2: linear-gradient(135deg, #0aa7dd 0%, #6c63ff 100%);
+      --grad-3: linear-gradient(135deg, #6c63ff 0%, #b832ff 100%);
+      --grad-4: linear-gradient(135deg, #b832ff 0%, #ff7a1a 100%);
+      --grad-5: linear-gradient(135deg, #ff7a1a 0%, #ffd21f 100%);
+      --grad-6: linear-gradient(135deg, #ffd21f 0%, #06c287 100%);
+
+      --section-bg:
+        radial-gradient(1200px 600px at 10% -10%, rgba(6, 194, 135, 0.12), transparent 60%),
+        radial-gradient(1200px 600px at 100% 110%, rgba(10, 167, 221, 0.10), transparent 60%);
     }
 
-    /* Light Mode */
-    body.light {
-      --bg:#f8fafc;
-      --text:#1e293b;
-      --muted:#475569;
-      --card1:#ffffff;
-      --card2:#f1f5f9;
-      --accent:#06c287;
-      --accent-2:#0aa7dd;
-      --accent-3:#6c63ff;
-      --border:rgba(0,0,0,.08);
-      --shadow:0 10px 28px rgba(0,0,0,.10);
-      --chip:rgba(14,23,42,.06);
-      --grad-1:linear-gradient(135deg,#06c287 0%,#0aa7dd 100%);
-      --grad-2:linear-gradient(135deg,#0aa7dd 0%,#6c63ff 100%);
-      --grad-3:linear-gradient(135deg,#6c63ff 0%,#b832ff 100%);
-      --grad-4:linear-gradient(135deg,#b832ff 0%,#ff7a1a 100%);
-      --grad-5:linear-gradient(135deg,#ff7a1a 0%,#ffd21f 100%);
-      --grad-6:linear-gradient(135deg,#ffd21f 0%,#06c287 100%);
-      --section-bg:radial-gradient(1200px 600px at 10% -10%,rgba(6,194,135,.12),transparent 60%),
-                   radial-gradient(1200px 600px at 100% 110%,rgba(10,167,221,.10),transparent 60%);
+    /* ========== Basic Styles ========== */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      background-image: var(--section-bg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: background 0.5s ease, color 0.3s ease;
     }
 
-    /* बाकी आपके header, nav, hero, sections, cards, footer, responsive CSS 
-       को साफ करके रखा है (duplicate blocks हटाए गए हैं) */
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card1);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 600px;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px var(--accent);
+    }
+
+    .btn-toggle {
+      background: var(--grad-1);
+      color: #000;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-toggle:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 0 12px var(--accent-2);
+    }
+
+    .gradient-text {
+      background: var(--grad-3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .35s ease,color .35s ease}
+
+/* Background Matrix */
+#matrix{position:fixed;inset:0;z-index:-3;background:#000}
+.radial-overlay{position:fixed;inset:0;pointer-events:none;background:var(--section-bg);z-index:-2}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 18px;border-bottom:1px solid var(--border);background:color-mix(in oklab, var(--bg) 82%, transparent)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:44px;height:44px;border-radius:10px;box-shadow:0 0 14px color-mix(in oklab,var(--accent),#fff 20%)}
+.brand h1{font-family:'Orbitron',sans-serif;letter-spacing:1.2px;margin:0;font-size:20px;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* Top nav for desktop */
+.topnav{display:flex;align-items:center;gap:18px}
+.topnav a{position:relative;text-decoration:none;font-weight:700;color:var(--muted);padding:10px 12px;border-radius:12px}
+.topnav a:hover{color:var(--text)}
+.topnav a::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:var(--grad-1);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.topnav a:hover::after{transform:scaleX(1)}
+
+.btn{padding:12px 18px;border:none;border-radius:14px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;background:var(--grad-1);color:#03120e;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 34px color-mix(in oklab,var(--accent),#fff 24%);filter:saturate(1.1)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+
+.icon-btn{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--chip);border:1px solid var(--border);cursor:pointer}
+
+/* Hamburger */
+.hamburger{display:none;gap:6px;flex-direction:column;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;border:1px solid var(--border);background:var(--chip);cursor:pointer;transition:transform .2s}
+.hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s}
+.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* Drawer */
+.drawer{position:fixed;top:0;left:0;height:100dvh;width:300px;max-width:88vw;background:linear-gradient(180deg,var(--card1),var(--card2));border-right:1px solid var(--border);box-shadow:0 0 50px rgba(0,0,0,.35);transform:translateX(-102%);transition:transform .35s cubic-bezier(.22,1,.36,1);z-index:60;display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer header{position:relative;background:transparent;border:none;padding:14px 16px}
+.drawer .menu{display:flex;flex-direction:column;padding:10px}
+.drawer .menu a{padding:12px 14px;border-radius:12px;margin:6px 6px;color:var(--text);text-decoration:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05));border:1px solid var(--border)}
+.drawer .menu a:hover{background:linear-gradient(90deg,rgba(255,255,255,.10),transparent)}
+
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s;z-index:55}
+.scrim.show{opacity:1;pointer-events:auto}
+
+/* Hero */
+.hero{position:relative;text-align:center;padding:120px 18px 84px;color:var(--text)}
+.hero::after{content:"";position:absolute;inset:auto 10% -10% 10%;height:2px;background:var(--grad-2);filter:blur(1px);opacity:.7}
+.hero h2{margin:0;font-size:clamp(28px,5vw,56px);font-family:'Orbitron',sans-serif;letter-spacing:1px;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 12px color-mix(in oklab,var(--accent),#fff 14%))}
+.hero p{max-width:980px;margin:16px auto 0;color:var(--muted);font-size:clamp(14px,2.4vw,19px)}
+
+/* Main layout */
+main{max-width:1200px;margin:auto;padding:54px 18px}
+section{margin:68px 0}
+.section-title{text-align:center;margin:0 0 28px;font-size:clamp(20px,3vw,30px);text-transform:uppercase;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative}
+.section-title::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-8px;width:160px;height:3px;background:var(--grad-3);border-radius:999px;box-shadow:0 0 18px color-mix(in oklab,var(--accent-3),#fff 10%)}
+
+/* Colored section wrappers */
+#about{background:linear-gradient(180deg, transparent, rgba(0,255,166,.05));padding:28px;border-radius:18px}
+#services{background:linear-gradient(180deg, transparent, rgba(0,210,255,.05));padding:28px;border-radius:18px}
+#portfolio{background:linear-gradient(180deg, transparent, rgba(255,61,245,.05));padding:28px;border-radius:18px}
+#contact{background:linear-gradient(180deg, transparent, rgba(255,138,0,.06));padding:28px;border-radius:18px}
+
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* Colorful cards */
+.card{position:relative;border-radius:16px;padding:22px;background:linear-gradient(135deg,color-mix(in oklab,var(--card1),#000 15%),color-mix(in oklab,var(--card2),#000 8%));border:1px solid var(--border);box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s,filter .2s}
+.card::after{content:"";position:absolute;inset:-1px;border-radius:18px;background:var(--grad-1);filter:blur(16px);opacity:.18;z-index:-1}
+.card:nth-child(2)::after{background:var(--grad-2)}
+.card:nth-child(3)::after{background:var(--grad-3)}
+.card:nth-child(4)::after{background:var(--grad-4)}
+.card:nth-child(5)::after{background:var(--grad-5)}
+.card:nth-child(6)::after{background:var(--grad-6)}
+.card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 0 36px color-mix(in oklab,var(--accent),#fff 22%);filter:saturate(1.05)}
+.card h3{margin:0 0 6px}
+.card p{margin:0;color:var(--muted)}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.stat{position:relative;border-radius:16px;padding:20px;background:conic-gradient(from 0.25turn at 50% 50%, rgba(0,210,255,.12), rgba(0,255,166,.12));border:1px solid var(--border);text-align:center;overflow:hidden}
+.stat::before{content:"";position:absolute;inset:-2px;border-radius:18px;background:var(--grad-2);filter:blur(18px);opacity:.18;z-index:-1}
+.stat .num{font-size:32px;font-weight:900;background:linear-gradient(90deg,var(--accent-2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat .label{color:var(--muted);font-size:13px}
+
+/* Contact form */
+form .field{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+label{font-weight:700;color:var(--text)}
+.input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:color-mix(in oklab,var(--card1),#000 8%);color:var(--text);outline:none;transition:border .2s,box-shadow .2s}
+.input:focus,textarea:focus{border:1px solid color-mix(in oklab,var(--accent),#fff 12%);box-shadow:0 0 0 3px color-mix(in oklab,var(--accent),#fff 20%)}
+
+/* Panels */
+#adminPanel,#userPanel{display:none;margin:28px auto;padding:24px;border-radius:16px;max-width:1000px;background:linear-gradient(135deg,color-mix(in oklab,var(--card2),#000 15%),color-mix(in oklab,var(--card1),#000 10%));border:1px solid var(--border);position:relative}
+#adminPanel::before,#userPanel::before{content:"";position:absolute;inset:-2px;border-radius:18px;background:var(--grad-1);z-index:-1;filter:blur(20px);opacity:.28}
+
+/* Footer */
+footer{position:relative;margin-top:40px;padding:26px 18px;text-align:center;border-top:1px solid var(--border);background:color-mix(in oklab,var(--bg) 85%, transparent);color:var(--muted)}
+footer a{color:var(--text);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.theme-fab{position:absolute;right:20px;bottom:20px;width:50px;height:50px;border-radius:50%;border:1px solid var(--border);background:var(--grad-1);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow)}
+
+/* Responsive */
+@media (max-width:980px){
+  .topnav{display:none}
+  .hamburger{display:flex}
+}
+
+/* Compatibility aliases so existing HTML keeps working */
+.overlay{position:fixed;inset:0;pointer-events:none;background:var(--section-bg);z-index:-2}
+.theme-toggle{position:absolute;right:20px;bottom:20px;width:50px;height:50px;border-radius:50%;border:1px solid var(--border);background:var(--grad-1);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow)}
+
+/* Support old JS that toggles body.light */
+body.light{
+  --bg:#f6f9fb;
+  --text:#0e1322;
+  --muted:#425b76;
+  --card1:#ffffff;
+  --card2:#eef6ff;
+  --accent:#06c287;
+  --accent-2:#0aa7dd;
+  --accent-3:#b832ff;
+  --border:rgba(0,0,0,.10);
+  --shadow:0 10px 26px rgba(9,30,66,.12);
+  --chip:rgba(8,17,27,.06);
+  --grad-1: linear-gradient(135deg, #06c287 0%, #0aa7dd 100%);
+  --grad-2: linear-gradient(135deg, #0aa7dd 0%, #6c63ff 100%);
+  --grad-3: linear-gradient(135deg, #6c63ff 0%, #b832ff 100%);
+  --grad-4: linear-gradient(135deg, #b832ff 0%, #ff7a1a 100%);
+  --grad-5: linear-gradient(135deg, #ff7a1a 0%, #ffd21f 100%);
+  --grad-6: linear-gradient(135deg, #ffd21f 0%, #06c287 100%);
+  --section-bg: radial-gradient(1200px 600px at 10% -10%, rgba(6,194,135,.12), transparent 60%),
+                radial-gradient(1200px 600px at 100% 110%, rgba(10,167,221,.10), transparent 60%);
+}
+
   </style>
 </head>
 <body data-theme="dark">
-  <!-- Background Matrix -->
   <canvas id="matrix"></canvas>
-  <div class="radial-overlay" aria-hidden="true"></div>
-
-  <!-- Drawer -->
-  <aside id="drawer" class="drawer" aria-hidden="true">
+  <div class="radial-overlay" aria-hidden="true"></div>  <!-- Drawer -->  <aside id="drawer" class="drawer" aria-hidden="true" aria-label="Primary">
     <header>
       <div class="brand"><img src="1000058324.png" alt="DarkLight Logo"><h1>DarkLight000999</h1></div>
     </header>
-    <nav class="menu">
+    <nav class="menu" role="navigation">
       <a href="#about" onclick="closeDrawer()">About</a>
       <a href="#services" onclick="closeDrawer()">Services</a>
       <a href="#portfolio" onclick="closeDrawer()">Portfolio</a>
       <a href="#contact" onclick="closeDrawer()">Contact</a>
-      <button class="btn-outline" onclick="toggleTheme()">🌞 / 🌑</button>
+      <button class="btn" style="margin:10px 8px" onclick="logout()">Logout</button>
+      <button class="btn-outline" style="margin:6px 8px" onclick="toggleTheme()" id="drawerTheme">🌞 / 🌑</button>
     </nav>
   </aside>
-  <div id="scrim" class="scrim" onclick="closeDrawer()"></div>
-
-  <!-- Header -->
-  <header>
-    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="drawer">
+  <div id="scrim" class="scrim" onclick="closeDrawer()" aria-hidden="true"></div>  <!-- Header -->  <header>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
     <div class="brand">
       <img src="1000058324.png" alt="DarkLight Logo" />
       <h1>DarkLight000999</h1>
     </div>
-    <nav class="topnav">
+    <nav class="topnav" role="navigation">
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
-      <button class="btn-outline" id="headerTheme" onclick="toggleTheme()">🌑</button>
+      <button class="btn-outline" id="headerTheme" onclick="toggleTheme()" title="Toggle theme">🌑</button>
       <button class="btn" onclick="logout()">Logout</button>
     </nav>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
+  </header>  <!-- Hero -->  <section class="hero">
     <h2>National Grade Cybersecurity (NGC)</h2>
-    <p>We are the frontline against cyber warfare. Protecting enterprises, governments & critical infrastructure with AI-driven defense.</p>
+    <p>We are the frontline against cyber warfare. Protecting enterprises, governments & critical infrastructure with AI‑driven defense.</p>
     <button class="btn">Get Protected</button>
-  </section>
-
-  <!-- About -->
-  <main>
+  </section>  <main>
     <section id="about">
       <h2 class="section-title">About Us</h2>
       <div class="grid">
-        <article class="card"><h3>Mission</h3><p>Ethical hacking, penetration testing, DFIR, SOC and cyber threat intel with 24×7 response.</p></article>
-        <article class="card"><h3>Values</h3><p>Zero-trust by default • Privacy first • AI-assisted analysts • Compliance-ready reports.</p></article>
-        <article class="card"><h3>Coverage</h3><p>Gov, PSU, BFSI, Energy, Telecom, Defense • On-prem & cloud workloads.</p></article>
+        <article class="card">
+          <h3>Mission</h3>
+          <p>Ethical hacking, penetration testing, DFIR, SOC and cyber threat intel with 24×7 response.</p>
+        </article>
+        <article class="card">
+          <h3>Values</h3>
+          <p>Zero‑trust by default • Privacy first • AI‑assisted analysts • Compliance‑ready reports.</p>
+        </article>
+        <article class="card">
+          <h3>Coverage</h3>
+          <p>Gov, PSU, BFSI, Energy, Telecom, Defense • On‑prem & cloud workloads.</p>
+        </article>
       </div>
-    </section>
+    </section><section id="services">
+  <h2 class="section-title">Services</h2>
+  <div class="grid">
+    <article class="card"><h3>🔐 Advanced Penetration Testing</h3><p>Full‑stack, cloud, IoT & mobile with exploit chain simulation.</p></article>
+    <article class="card"><h3>🛰️ Next‑Gen SOC & Threat Hunting</h3><p>MITRE ATT&CK mapping, UEBA & continuous hunt playbooks.</p></article>
+    <article class="card"><h3>⚡ Critical Infrastructure Security</h3><p>ICS/SCADA hardening, Red/Blue/Purple exercises.</p></article>
+    <article class="card"><h3>🧬 DFIR</h3><p>Forensics, malware triage, legal‑grade evidence.</p></article>
+    <article class="card"><h3>🤖 AI‑driven Threat Intel</h3><p>OSINT/Darkweb monitoring, risk scoring, auto‑enrichment.</p></article>
+    <article class="card"><h3>🎯 Training</h3><p>Red Team / Blue Team bootcamps & tabletop drills.</p></article>
+  </div>
+</section>
 
-    <!-- Services -->
-    <section id="services">
-      <h2 class="section-title">Services</h2>
-      <div class="grid">
-        <article class="card"><h3>🔐 Advanced Penetration Testing</h3><p>Full-stack, cloud, IoT & mobile with exploit chain simulation.</p></article>
-        <article class="card"><h3>🛰️ Next-Gen SOC & Threat Hunting</h3><p>MITRE ATT&CK mapping, UEBA & continuous hunt playbooks.</p></article>
-        <article class="card"><h3>⚡ Critical Infrastructure Security</h3><p>ICS/SCADA hardening, Red/Blue/Purple exercises.</p></article>
-        <article class="card"><h3>🧬 DFIR</h3><p>Forensics, malware triage, legal-grade evidence.</p></article>
-        <article class="card"><h3>🤖 AI-driven Threat Intel</h3><p>OSINT/Darkweb monitoring, risk scoring, auto-enrichment.</p></article>
-        <article class="card"><h3>🎯 Training</h3><p>Red Team / Blue Team bootcamps & tabletop drills.</p></article>
-      </div>
-    </section>
+<section id="portfolio">
+  <h2 class="section-title">Portfolio / Case Studies</h2>
+  <div class="stats">
+    <div class="stat"><div class="num">200+</div><div class="label">Gov & Enterprise Clients</div></div>
+    <div class="stat"><div class="num">10K+</div><div class="label">Cyberattacks Prevented</div></div>
+    <div class="stat"><div class="num">24/7</div><div class="label">Continuous Monitoring</div></div>
+    <div class="stat"><div class="num"><span style="font-variant-numeric:tabular-nums">99.98%</span></div><div class="label">SLA Uptime</div></div>
+  </div>
+</section>
 
-    <!-- Portfolio -->
-    <section id="portfolio">
-      <h2 class="section-title">Portfolio / Case Studies</h2>
-      <div class="stats">
-        <div class="stat"><div class="num">200+</div><div class="label">Gov & Enterprise Clients</div></div>
-        <div class="stat"><div class="num">10K+</div><div class="label">Cyberattacks Prevented</div></div>
-        <div class="stat"><div class="num">24/7</div><div class="label">Continuous Monitoring</div></div>
-        <div class="stat"><div class="num">99.98%</div><div class="label">SLA Uptime</div></div>
-      </div>
-    </section>
+<section id="contact">
+  <h2 class="section-title">Contact Us</h2>
+    </script>
+<p align="center" style="margin: 20px 0;">
+  <a href="https://www.instagram.com/darklight000999_?igsh=cmEwN3htaTRodzl3" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="50" height="50" style="margin:10px;"/>
+  </a>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2 class="section-title">Contact Us</h2>
+  <a href="https://t.me/darklight000999" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" width="50" height="50" style="margin:10px;"/>
+  </a>
 
-      <!-- Social Links -->
-      <p align="center">
-        <a href="https://www.instagram.com/darklight000999_" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="50"/></a>
-        <a href="https://t.me/darklight000999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="50"/></a>
-        <a href="https://chat.whatsapp.com/KALyrkZm2ru2xiTY9u0Tc0" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="50"/></a>
-        <a href="https://www.facebook.com/darklight000999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="50"/></a>
-        <a href="https://youtube.com/@mr_br_hacker_33" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="50"/></a>
-        <a href="https://github.com/Darklight000999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="50"/></a>
-      </p>
+  <a href="https://chat.whatsapp.com/KALyrkZm2ru2xiTY9u0Tc0?mode=ac_t" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="50" height="50" style="margin:10px;"/>
+  </a>
 
-      <!-- Contact Form -->
-      <form id="contactForm" class="contact-form">
-        <div class="field"><label for="name">Your Name</label><input id="name" type="text" required></div>
-        <div class="field"><label for="email">Your Email</label><input id="email" type="email" required></div>
-        <div class="field"><label for="phone">Mobile Number</label><input id="phone" type="tel" maxlength="10" required></div>
-        <div class="field"><label for="message">Your Message</label><textarea id="message" rows="5" required></textarea></div>
-        <button type="submit" class="btn">Send Your Message</button>
-      </form>
-      <p id="successMsg" style="display:none;text-align:center;margin-top:10px;"></p>
-    </section>
+  <a href="https://www.facebook.com/darklight000999" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="50" height="50" style="margin:10px;"/>
+  </a>
 
-    <!-- Panels -->
-    <div id="adminPanel"><h2>🔐 Admin Control Center</h2><p>Manage operations securely.</p><button class="btn" onclick="logout()">Logout</button></div>
-    <div id="userPanel"><h2>👤 Secure Client Portal</h2><p>Welcome to your dashboard.</p><button class="btn" onclick="logout()">Logout</button></div>
-  </main>
+  <a href="https://youtube.com/@mr_br_hacker_33?si=IBcIbcrVE1Xur_vL" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" width="50" height="50" style="margin:10px;"/>
+  </a>
 
-  <!-- Footer -->
-  <footer>
+  <a href="https://github.com/Darklight000999" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" width="50" height="50" style="margin:10px;"/>
+  </a>
+
+  <a href="https://share.google/BIo6sUsdFCFMMkc0z" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google Business" width="50" height="50" style="margin:10px;"/>
+  </a>
+ 
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Send data via FormSubmit
+    fetch("https://formsubmit.co/ajax/darklightrkshackers@gmail.com", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        const msg = document.getElementById("successMsg");
+        msg.style.display = "block";
+        msg.classList.add("shake");
+        // Redirect after 2 seconds
+        setTimeout(() => {
+          window.location.href = "https://rkscybersecurity.netlify.app";
+        }, 2000);
+      } else {
+        alert("Something went wrong, please try again.");
+      }
+    })
+    .catch(error => alert("Error: " + error));
+  });
+</script>
+  
+<section id="contact">
+  <h2 class="section-title">Contact Us</h2>
+
+  <form id="contactForm" class="contact-form">
+    <div class="field">
+      <label for="name">Your Name</label>
+      <input id="name" type="text" name="name" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="field">
+      <label for="email">Your Email</label>
+      <input id="email" type="email" name="email" placeholder="Enter your email address" required>
+    </div>
+
+    <div class="field">
+      <label for="phone">Mobile Number</label>
+      <input id="phone" type="tel" name="phone" placeholder="Enter your mobile number" maxlength="10" required>
+    </div>
+
+    <div class="field">
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn">Send Your Message</button>
+  </form>
+
+  <!-- Error-style message -->
+  <p id="successMsg">
+    First login, if you don't have an account then create a new account
+  </p>
+</section>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    fetch("https://formsubmit.co/ajax/darklightrkshackers@gmail.com", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value
+      })
+    })
+    .then(response => {
+      const msg = document.getElementById("successMsg");
+      if (response.ok) {
+        msg.style.display = "block";
+        msg.textContent = "Message Sent Successfully! Redirecting...";
+        msg.style.color = "#00ffe7";
+        msg.classList.add("shake");
+        setTimeout(() => {
+          window.location.href = "https://rkscybersecurity.netlify.app";
+        }, 2000);
+      } else {
+        msg.style.display = "block";
+        msg.textContent = "Something went wrong, please try again.";
+        msg.style.color = "red";
+        msg.classList.add("shake");
+      }
+    })
+    .catch(error => alert("Error: " + error));
+  });
+</script>
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000000, #0f2027, #2c5364);
+    color: #fff;
+  }
+
+  #contact {
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #00ffe7;
+    text-shadow: 0 0 10px #00ffe7;
+    text-align: center;
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 750px; /* पहले 500px था */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px rgba(0, 255, 200, 0.4);
+  }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  .field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #00ffe7;
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    outline: none;
+    font-size: 15px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s ease;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    border: 2px solid #00ffe7;
+    box-shadow: 0 0 12px #00ffe7;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px; /* पहले 14px था */
+    border: none;
+    border-radius: 12px;
+    font-size: 16px; /* पहले 18px था */
+    font-weight: 600;
+    color: black;
+    background: linear-gradient(45deg, #00ffe7, #007bff);
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .btn:hover {
+    background: linear-gradient(45deg, #007bff, #00ffe7);
+    box-shadow: 0px 0px 16px #00ffe7;
+  }
+
+  #successMsg {
+    display: none;
+    color: #00ff94; /* success के लिए हरा किया */
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* ❌ Error Message */
+  #errorMsg {
+    display: none;
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* Shake Animation */
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  .shake {
+    animation: shake 0.5s ease-in-out 2;
+  }
+
+  /* 📱 Mobile Responsive */
+  @media (max-width: 600px) {
+    .contact-form {
+      padding: 20px;
+    }
+    .btn {
+      font-size: 15px;
+      padding: 10px;
+    }
+    .section-title {
+      font-size: 26px;
+    }
+  }
+</style>
+<!-- ✅ Extra CSS for Professional Look -->
+<style>
+.contact-form {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.contact-form .field {
+  margin-bottom: 15px;
+}
+
+.contact-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5x;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.2s ease-in-out;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+.contact-form .btn {
+  width: 100%;
+  background: #007BFF;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form .btn:hover {
+  background: #0056b3;
+}
+</style>
+</section>
+
+<div id="adminPanel">
+  <h2>🔐 Admin Control Center</h2>
+  <p>Welcome, Super Admin. Manage DarkLight NGC operations securely.</p>
+  <button class="btn" onclick="logout()">Logout</button>
+</div>
+
+<div id="userPanel">
+  <h2>👤 Secure Client Portal</h2>
+  <p>Welcome to your dashboard. Access reports, alerts and monitoring data here.</p>
+  <button class="btn" onclick="logout()">Logout</button>
+</div>
+
+  </main>  <footer>
     <p>© 2025 DarkLight000999 — National Grade Cybersecurity Agency | All Rights Reserved</p>
-    <div><a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">GitHub</a></div>
-    <button class="theme-fab" onclick="toggleTheme()">🌑</button>
-  </footer>
+    <div>
+      <a href="#">Privacy Policy</a> · <a href="#">Terms</a> · <a href="#">LinkedIn</a> · <a href="#">GitHub</a>
+    </div>
+    <button class="theme-fab" id="footerTheme" onclick="toggleTheme()" title="Toggle theme">🌑</button>
+  </footer>  <script>
+    // ===== Matrix Rain (respects reduced motion) =====
+    const matrix = document.getElementById('matrix');
+    const mtx = matrix.getContext('2d');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function resizeCanvas(){matrix.width=window.innerWidth;matrix.height=window.innerHeight}
+    resizeCanvas();
+    window.addEventListener('resize',resizeCanvas);
 
-  <!-- Scripts -->
-  <script>
-    // Drawer Toggle
-    const drawer=document.getElementById("drawer");
-    const scrim=document.getElementById("scrim");
-    const hamburger=document.getElementById("hamburger");
-    function closeDrawer(){drawer.classList.remove("open");scrim.classList.remove("show");hamburger.setAttribute("aria-expanded","false");}
-    hamburger.onclick=()=>{drawer.classList.toggle("open");scrim.classList.toggle("show");hamburger.setAttribute("aria-expanded",drawer.classList.contains("open"));};
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
+    const fontSize = 14; let drops = [];
+    function initDrops(){const cols=Math.ceil(matrix.width/fontSize);drops = Array(cols).fill(1)}
+    initDrops();
+    function draw(){
+      mtx.fillStyle = 'rgba(0,0,0,0.08)';
+      mtx.fillRect(0,0,matrix.width,matrix.height);
+      mtx.fillStyle = '#0f0';
+      mtx.font = fontSize+'px monospace';
+      for(let i=0;i<drops.length;i++){
+        const ch = letters[Math.floor(Math.random()*letters.length)];
+        mtx.fillText(ch,i*fontSize,drops[i]*fontSize);
+        if(drops[i]*fontSize>matrix.height && Math.random()>0.975) drops[i]=0;
+        drops[i]++;
+      }
+    }
+    let matrixTimer = null;
+    function startMatrix(){ if(prefersReduced) return; stopMatrix(); matrixTimer = setInterval(draw,33) }
+    function stopMatrix(){ if(matrixTimer) clearInterval(matrixTimer) }
+    startMatrix();
 
-    // Theme Toggle
-    function toggleTheme(){document.body.classList.toggle("light");}
+    // ===== Drawer Controls =====
+    const drawer = document.getElementById('drawer');
+    const scrim = document.getElementById('scrim');
+    const burger = document.getElementById('hamburger');
+    let lastFocused = null;
 
-    // Contact Form
-    document.getElementById("contactForm").addEventListener("submit",e=>{
-      e.preventDefault();
-      fetch("https://formsubmit.co/ajax/darklightrkshackers@gmail.com",{
-        method:"POST",
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          name:document.getElementById("name").value,
-          email:document.getElementById("email").value,
-          phone:document.getElementById("phone").value,
-          message:document.getElementById("message").value
-        })
-      }).then(r=>{
-        const msg=document.getElementById("successMsg");
-        if(r.ok){msg.style.display="block";msg.textContent="Message sent successfully!";msg.style.color="#00ff94";}
-        else{msg.style.display="block";msg.textContent="Error! Try again.";msg.style.color="red";}
+    function openDrawer(){
+      lastFocused = document.activeElement;
+      drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false');
+      scrim.classList.add('show'); burger.setAttribute('aria-expanded','true');
+      drawer.querySelector('a,button').focus();
+      document.addEventListener('keydown',trapTab);
+    }
+    function closeDrawer(){
+      drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true');
+      scrim.classList.remove('show'); burger.setAttribute('aria-expanded','false');
+      document.removeEventListener('keydown',trapTab);
+      if(lastFocused) lastFocused.focus();
+    }
+    function trapTab(e){
+      if(e.key==='Escape'){closeDrawer();return}
+      if(e.key!=='Tab') return;
+      const focusables = drawer.querySelectorAll('a,button');
+      const first = focusables[0]; const last = focusables[focusables.length-1];
+      if(e.shiftKey && document.activeElement===first){ last.focus(); e.preventDefault(); }
+      else if(!e.shiftKey && document.activeElement===last){ first.focus(); e.preventDefault(); }
+    }
+    burger.addEventListener('click',()=>{drawer.classList.contains('open')?closeDrawer():openDrawer()});
+
+    // expose close for inline onclick
+    window.closeDrawer = closeDrawer;
+
+    // ===== Theme Toggle with Persistence =====
+    const THEME_KEY = 'dl-theme';
+    const body = document.body;
+    function applyThemeIcon(){
+      const isLight = body.getAttribute('data-theme')==='light';
+      document.getElementById('headerTheme')?.setAttribute('title', isLight?'Dark':'Light');
+      document.getElementById('headerTheme')?.replaceChildren(document.createTextNode(isLight?'🌑':'🌞'));
+      document.getElementById('footerTheme')?.replaceChildren(document.createTextNode(isLight?'🌑':'🌞'));
+      document.getElementById('drawerTheme')?.replaceChildren(document.createTextNode(isLight?'🌑':'🌞'));
+    }
+    function setTheme(mode){ body.setAttribute('data-theme', mode); localStorage.setItem(THEME_KEY, mode); applyThemeIcon(); }
+    function toggleTheme(){ const mode = body.getAttribute('data-theme')==='light'?'dark':'light'; setTheme(mode); }
+    window.toggleTheme = toggleTheme;
+    const stored = localStorage.getItem(THEME_KEY); if(stored){ setTheme(stored); } else { setTheme('dark'); }
+
+    // ===== Firebase Auth (fill your config) =====
+    (async ()=>{
+      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js');
+      const { getAuth, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } = await import('https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js');
+      const firebaseConfig = {
+        apiKey: 'AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o',
+        authDomain: 'elegant-moment-470412-h3.firebaseapp.com',
+        projectId: 'elegant-moment-470412-h3',
+        storageBucket: 'elegant-moment-470412-h3.firebasestorage.app',
+        messagingSenderId: '948629350861',
+        appId: '1:948629350861:web:5d9e141e3bce27dd657c84'
+      };
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      await setPersistence(auth, browserLocalPersistence);
+
+      const adminEmail = 'darklightrkshackers@gmail.com';
+      onAuthStateChanged(auth, user => {
+        if(user){
+          if(user.email === adminEmail){ document.getElementById('adminPanel').style.display='block'; }
+          else { document.getElementById('userPanel').style.display='block'; }
+        }else{
+          // window.location.href = 'index.html'; // uncomment if this page is protected
+        }
       });
-    });
-  </script>
-</body>
+      window.logout = ()=> signOut(auth).then(()=>{ window.location.href='index.html'; });
+    })();
+  </script></body>
 </html>
