@@ -272,6 +272,7 @@ body.light{
       <a href="#services" onclick="closeDrawer()">Services</a>
       <a href="#portfolio" onclick="closeDrawer()">Portfolio</a>
       <a href="#contact" onclick="closeDrawer()">Contact</a>
+      <button class="btn" style="margin:10px 8px" onclick="logout()">Logout</button>
       <button class="btn-outline" style="margin:6px 8px" onclick="toggleTheme()" id="drawerTheme">🌞 / 🌑</button>
     </nav>
   </aside>
@@ -366,7 +367,6 @@ body.light{
     <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google Business" width="50" height="50" style="margin:10px;"/>
   </a>
  
-
 <script>
   document.getElementById("contactForm").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -399,9 +399,6 @@ body.light{
   });
 </script>
   
-<section id="contact">
-  <h2 class="section-title">Contact Us</h2>
-
   <form id="contactForm" class="contact-form">
     <div class="field">
       <label for="name">Your Name</label>
@@ -450,8 +447,8 @@ body.light{
       const msg = document.getElementById("successMsg");
       if (response.ok) {
         msg.style.display = "block";
-        msg.textContent = "Message Sent Successfully! Redirecting...";
-        msg.style.color = "#00ffe7";
+        msg.textContent = "First login, if you don't have an account then create a new account...";
+        msg.style.color = "#ff0040";
         msg.classList.add("shake");
         setTimeout(() => {
           window.location.href = "https://rkscybersecurity.netlify.app";
@@ -467,170 +464,133 @@ body.light{
   });
 </script>
   <style>
-  /* ग्लोबल फील */
-body {
-  background: radial-gradient(circle at top, #001f33, #000);
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-}
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000000, #0f2027, #2c5364);
+    color: #fff;
+  }
 
-/* Field Box */
-.field input,
-.field textarea {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  outline: none;
-  font-size: 15px;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  transition: 0.4s ease;
-  backdrop-filter: blur(5px);
-}
+  #contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+  }
 
-/* Focus Animation */
-.field input:focus,
-.field textarea:focus {
-  border: 2px solid #00ffe7;
-  box-shadow: 0 0 15px #00ffe7, 0 0 30px #007bff;
-  animation: glow 1.5s infinite alternate;
-}
+  .section-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #00ffe7;
+    text-shadow: 0 0 10px #00ffe7;
+    text-align: center;
+  }
 
-/* Glow Keyframe */
-@keyframes glow {
-  from { box-shadow: 0 0 10px #00ffe7, 0 0 20px #007bff; }
-  to { box-shadow: 0 0 20px #00ffe7, 0 0 40px #007bff; }
-}
+  .contact-form {
+    width: 100%;
+    max-width: 700px; /* पहले 500px था */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px rgba(0, 255, 200, 0.4);
+  }
 
-/* Button */
-.btn {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #000;
-  background: linear-gradient(270deg, #00ffe7, #007bff, #00ff94);
-  background-size: 300% 300%;
-  cursor: pointer;
-  transition: 0.3s ease;
-  animation: gradientMove 4s infinite alternate;
-}
+  .field {
+    margin-bottom: 20px;
+  }
 
-/* Button Hover */
-.btn:hover {
-  box-shadow: 0 0 20px #00ffe7, 0 0 40px #007bff;
-  transform: scale(1.05);
-}
+  .field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #00ffe7;
+  }
 
-/* Gradient Animation */
-@keyframes gradientMove {
-  0% { background-position: left; }
-  100% { background-position: right; }
-}
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    outline: none;
+    font-size: 15px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s ease;
+  }
 
-/* Success Message */
-#successMsg {
-  display: none;
-  color: #00ff94;
-  font-weight: bold;
-  margin-top: 15px;
-  font-size: 15px;
-  text-align: center;
-  animation: fadeIn 0.8s ease;
-}
+  .field input:focus,
+  .field textarea:focus {
+    border: 2px solid #00ffe7;
+    box-shadow: 0 0 12px #00ffe7;
+  }
 
-/* Error Message */
-#errorMsg {
-  display: none;
-  color: #ff4d4d;
-  font-weight: bold;
-  margin-top: 10px;
-  font-size: 15px;
-  text-align: center;
-  animation: shake 0.5s ease-in-out 2;
-}
+  .btn {
+    width: 100%;
+    padding: 12px; /* पहले 14px था */
+    border: none;
+    border-radius: 12px;
+    font-size: 16px; /* पहले 18px था */
+    font-weight: 600;
+    color: black;
+    background: linear-gradient(45deg, #00ffe7, #007bff);
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
+  .btn:hover {
+    background: linear-gradient(45deg, #007bff, #00ffe7);
+    box-shadow: 0px 0px 16px #00ffe7;
+  }
 
-/* Shake Animation */
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
- 
+  #successMsg {
+    display: none;
+    color: #00ff94; /* success के लिए हरा किया */
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* ❌ Error Message */
+  #errorMsg {
+    display: none;
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* Shake Animation */
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  .shake {
+    animation: shake 0.5s ease-in-out 2;
+  }
+
+  /* 📱 Mobile Responsive */
+  @media (max-width: 600px) {
+    .contact-form {
+      padding: 20px;
+    }
+    .btn {
+      font-size: 15px;
+      padding: 10px;
+    }
+    .section-title {
+      font-size: 26px;
+    }
+  }
 </style>
-<!-- ✅ Extra CSS for Professional Look -->
-<style>
-.contact-form {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-family: Arial, sans-serif;
-}
-
-.contact-form .field {
-  margin-bottom: 15px;
-}
-
-.contact-form label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5x;
-  color: #333;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: border 0.2s ease-in-out;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #007BFF;
-  outline: none;
-}
-
-.contact-form .btn {
-  width: 100%;
-  background: #007BFF;
-  color: white;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.contact-form .btn:hover {
-  background: #0056b3;
-}
-</style>
-</section>
 
 <div id="adminPanel">
   <h2>🔐 Admin Control Center</h2>
