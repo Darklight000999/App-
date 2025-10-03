@@ -268,10 +268,11 @@ body.light{
       <div class="brand"><img src="1000058324.png" alt="DarkLight Logo"><h1>DarkLight000999</h1></div>
     </header>
     <nav class="menu" role="navigation">
-      <a href="service.html" onclick="closeDrawer()">service</a>
+      <a href="#about" onclick="closeDrawer()">About</a>
       <a href="#services" onclick="closeDrawer()">Services</a>
       <a href="#portfolio" onclick="closeDrawer()">Portfolio</a>
       <a href="#contact" onclick="closeDrawer()">Contact</a>
+      <button class="btn" style="margin:10px 8px" onclick="logout()">Logout</button>
       <button class="btn-outline" style="margin:6px 8px" onclick="toggleTheme()" id="drawerTheme">🌞 / 🌑</button>
     </nav>
   </aside>
@@ -283,17 +284,15 @@ body.light{
       <img src="1000058324.png" alt="DarkLight Logo" />
       <h1>DarkLight000999</h1>
     </div>
- <!-- मेन्यू बार -->
-<header>
-  <nav class="menu" role="navigation">
-    <a href="index.html#services" onclick="closeDrawer()">Services</a>
-    <a href="index.html#portfolio" onclick="closeDrawer()">Portfolio</a>
-    <a href="index.html#contact" onclick="closeDrawer()">Contact</a>
-    <button class="btn-outline" id="headerTheme" onclick="toggleTheme()" title="Toggle theme">🌑</button>
-    <button class="btn" onclick="logout()">Logout</button>
-  </nav>
-</header>
-  <!-- Hero -->  <section class="hero">
+    <nav class="topnav" role="navigation">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+      <button class="btn-outline" id="headerTheme" onclick="toggleTheme()" title="Toggle theme">🌑</button>
+      <button class="btn" onclick="logout()">Logout</button>
+    </nav>
+  </header>  <!-- Hero -->  <section class="hero">
     <h2>National Grade Cybersecurity (NGC)</h2>
     <p>We are the frontline against cyber warfare. Protecting enterprises, governments & critical infrastructure with AI‑driven defense.</p>
     <button class="btn">Get Protected</button>
