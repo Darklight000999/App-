@@ -292,6 +292,13 @@ body.light{
       <button class="btn-outline" id="headerTheme" onclick="toggleTheme()" title="Toggle theme">🌑</button>
       <button class="btn" onclick="logout()">Logout</button>
     </nav>
+    window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+  const page = params.get('page');
+  if (page) {
+    window.location.href = page + '.html';
+  }
+};
   </header>  <!-- Hero -->  <section class="hero">
     <h2>National Grade Cybersecurity (NGC)</h2>
     <p>We are the frontline against cyber warfare. Protecting enterprises, governments & critical infrastructure with AI‑driven defense.</p>
